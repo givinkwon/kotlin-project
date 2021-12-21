@@ -1,0 +1,19 @@
+<?xml version="1.0" encoding="utf-8"?>
+<menu xmlns:android="http://schemas.android.com/apk/res/android">
+    <item
+        android:title="Feed"
+        android:enabled="true"
+        android:id="@+id/mypage_menu_feed"
+        android:icon="@drawable/ic_baseline_message_24" />
+    <item
+        android:title="Fan"
+        android:enabled="true"
+        android:id="@+id/mypage_menu_fan"
+        android:icon="@drawable/ic_baseline_people_24" />
+    <item
+        android:title="My"
+        android:enabled="true"
+        android:id="@+id/mypage_menu_my"
+        android:icon="@drawable/ic_baseline_person_24" />
+
+</menu>

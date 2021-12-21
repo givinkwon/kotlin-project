@@ -1,0 +1,39 @@
+{
+  "project_info": {
+    "project_number": "987057543308",
+    "project_id": "personalcoin-4edf1",
+    "storage_bucket": "personalcoin-4edf1.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:987057543308:android:94051b60bfc3cad2ff83a9",
+        "android_client_info": {
+          "package_name": "com.example.kotlin"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "987057543308-a1e2bod0leg6ejp65qo56ijicug9og30.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyDMs1bTWCNqOIZk2N4tCrodYeJM9pOH_Vc"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": [
+            {
+              "client_id": "987057543308-a1e2bod0leg6ejp65qo56ijicug9og30.apps.googleusercontent.com",
+              "client_type": 3
+            }
+          ]
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}
