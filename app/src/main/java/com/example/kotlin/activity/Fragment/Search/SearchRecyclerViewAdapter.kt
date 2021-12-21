@@ -31,7 +31,7 @@ class SearchRecyclerViewAdapter(private val context: Context): RecyclerView.Adap
         Log.d("NO..", "${position}")
         holder.name.text = user.username
         holder.age.text = user.value.toString()
-        holder.region.text = user.personal_coin_id
+//        holder.region.text = user.personal_coin_id
     }
 
     // 화면에 가져올 아이템 개수 세기
@@ -40,9 +40,9 @@ class SearchRecyclerViewAdapter(private val context: Context): RecyclerView.Adap
     }
 
     inner class ViewHolder(itemView: View):RecyclerView.ViewHolder(itemView){
-        val name : TextView = itemView.findViewById(R.id.home_name)
-        val age : TextView = itemView.findViewById(R.id.home_profile_image)
-        val region : TextView = itemView.findViewById(R.id.home_value)
+        val name : TextView = itemView.findViewById(R.id.category_title1)
+        val age : TextView = itemView.findViewById(R.id.category_click1)
+//        val region : TextView = itemView.findViewById(R.id.home_value)
 
     }
 
