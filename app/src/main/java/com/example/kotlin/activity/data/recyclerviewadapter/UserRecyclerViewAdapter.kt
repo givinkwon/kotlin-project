@@ -1,4 +1,4 @@
-package com.example.kotlin.activity.Fragment.Feed
+package com.example.kotlin.activity.data.recyclerviewadapter
 
 import android.content.Context
 import android.util.Log
@@ -7,21 +7,22 @@ import android.view.View
 import android.view.ViewGroup
 import android.widget.ImageView
 import android.widget.TextView
-import androidx.fragment.app.Fragment
 import androidx.recyclerview.widget.RecyclerView
 import com.bumptech.glide.Glide
 import com.example.kotlin.activity.data.form.User
 import com.example.myapplication.R
-import kotlinx.android.synthetic.main.fragment_mypage.*
-import kotlinx.android.synthetic.main.signup.*
 
+// 1. RecyclerViewAdapter는 view(xml)이 아닌 data model에 따라 정의한다
+// 2. 범용성을 확보하기 위해 input parameter로 activity/fragment를 받아 view를 정의할 때 if문으로 재설정
+// 3. 모든 데이터를 받아오되, container에 따라 data를 다르게 한다.
 
-class FeedRecyclerViewAdapter(private val context: Context): RecyclerView.Adapter<FeedRecyclerViewAdapter.ViewHolder>() {
-    private var feedList = mutableListOf<User>()
+class UserRecyclerViewAdapter(private val context: Context): RecyclerView.Adapter<UserRecyclerViewAdapter.ViewHolder>() {
+    private var userList = mutableListOf<User>()
 
     // data init
-    fun setListData(data:MutableList<User>){
-        feedList = data
+    fun setListData(data: User){
+        userList.add(data)
+        notifyDataSetChanged()
     }
 
     // 뷰 홀더 만들기 => recycler_view_item.xml과 연결하여 view로 변환
@@ -36,14 +37,11 @@ class FeedRecyclerViewAdapter(private val context: Context): RecyclerView.Adapte
         Log.d("NO..", "${user.username}")
         holder.name.text = user.username
         Glide.with(context)
-            .load(user.recent_content_image)
+            .load(user.profileimage)
             .fitCenter()
             .into(holder.profile_image)
         holder.value.text = user.value
 
-        // 내용 숨기기 => 클릭 시 보이게 하기
-        showHide(holder.name)
-        showHide(holder.value)
 
     }
 

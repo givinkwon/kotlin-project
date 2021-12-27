@@ -21,7 +21,6 @@ class FeedViewModel : ViewModel() {
         auth = FirebaseAuth.getInstance()
         val user = auth.currentUser
         var firestore = FirebaseFirestore.getInstance()
-//        var listData: MutableList<User> = mutableListOf<User>()
 
         return Observable.create { emitter ->
             firestore.collection("Feed")
@@ -34,9 +33,8 @@ class FeedViewModel : ViewModel() {
                     for (doc in value!!) {
 
                         val getData = doc.toObject(Feed::class.java)
-//                        listData.add(getData!!)
-                        getData?.let { FeedDoc ->
-                            emitter.onNext(FeedDoc)
+                        getData?.let { currentFeedDoc ->
+                            emitter.onNext(currentFeedDoc)
                         }
 
                     }

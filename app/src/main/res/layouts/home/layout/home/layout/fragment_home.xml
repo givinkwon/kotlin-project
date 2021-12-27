@@ -48,7 +48,7 @@
         android:layout_height="wrap_content"
         android:layout_margin="10dp"
         android:layout_below="@+id/top_recyclerView"
-        android:text="내가 곧 친해질 수 있는 사람들" />
+        android:text="내가 친해질 수 없는 사람들" />
 
     <!-- RecyclerView 가로 배치 -->
     <androidx.recyclerview.widget.RecyclerView

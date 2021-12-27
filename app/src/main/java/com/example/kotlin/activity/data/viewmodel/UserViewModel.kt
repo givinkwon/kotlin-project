@@ -13,16 +13,42 @@ import io.reactivex.Observable
 import io.reactivex.Single
 import io.reactivex.schedulers.Schedulers
 
-class CurrentUserViewModel : ViewModel() {
+class UserViewModel : ViewModel() {
     private lateinit var auth: FirebaseAuth
 
-    fun getData(): Single<User> {
+    fun getData(): Observable<User> {
         auth = FirebaseAuth.getInstance()
         val user = auth.currentUser
         var firestore = FirebaseFirestore.getInstance()
 
 
-        return Single.create { emitter ->
+        return Observable.create { emitter ->
+            firestore.collection("User")
+                .addSnapshotListener { value, e ->
+                    if (e != null) {
+                        Log.w("우옹", "Listen failed.", e)
+                        return@addSnapshotListener
+                    }
+
+                    for (doc in value!!) {
+
+                        val getData = doc.toObject(User::class.java)
+                        getData?.let { currentUserDoc ->
+                            emitter.onNext(currentUserDoc)
+                        }
+
+                    }
+                }
+        }
+    }
+
+    fun getCurrentUserData(): Observable<User> {
+        auth = FirebaseAuth.getInstance()
+        val user = auth.currentUser
+        var firestore = FirebaseFirestore.getInstance()
+
+
+        return Observable.create { emitter ->
             firestore.collection("User").whereEqualTo("email", user?.email!!)
                 .addSnapshotListener { value, e ->
                     if (e != null) {
@@ -34,7 +60,7 @@ class CurrentUserViewModel : ViewModel() {
 
                         val getData = doc.toObject(User::class.java)
                         getData?.let { currentUserDoc ->
-                            emitter.onSuccess(currentUserDoc)
+                            emitter.onNext(currentUserDoc)
                         }
 
                     }

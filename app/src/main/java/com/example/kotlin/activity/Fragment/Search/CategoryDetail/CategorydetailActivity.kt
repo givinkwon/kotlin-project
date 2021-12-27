@@ -3,11 +3,10 @@ package com.example.kotlin.activity.Fragment.Search
 import android.os.Bundle
 import android.view.MenuItem
 import androidx.appcompat.app.AppCompatActivity
-import androidx.lifecycle.Observer
 import androidx.lifecycle.ViewModelProvider
 import androidx.recyclerview.widget.LinearLayoutManager
-import com.example.kotlin.activity.Fragment.Search.CategoryDetail.CategoryDetailRecyclerViewAdapter
-import com.example.kotlin.activity.Fragment.Search.CategoryDetail.CategoryDetailRecyclerViewModel
+import com.example.kotlin.activity.data.recyclerviewadapter.FeedRecyclerViewAdapter
+import com.example.kotlin.activity.data.viewmodel.FeedViewModel
 import com.example.myapplication.R
 import com.example.myapplication.databinding.CategoryDetailBinding
 import kotlinx.android.synthetic.main.category_detail.*
@@ -18,8 +17,8 @@ class CategorydetailActivity: AppCompatActivity() {
     // RecyclerView
     // fragment_home.xml 연결 => lateinit => Fragment가 먼저 생성되고 선언될 수 있음 => onCreateView에서 binding 변수를 초기화함.
     private lateinit var binding: CategoryDetailBinding
-    private val viewmodel by lazy { ViewModelProvider(this).get(CategoryDetailRecyclerViewModel::class.java) } // 생명주기 처리 없이 Livedata를 저장하고 있는 ViewModel
-    private lateinit var adapter: CategoryDetailRecyclerViewAdapter // 홀더에 데이터를 뿌려주는 Adapter
+    private val feedviewmodel by lazy { ViewModelProvider(this).get(FeedViewModel::class.java) } // 생명주기 처리 없이 Livedata를 저장하고 있는 ViewModel
+    private lateinit var adapterfeed: FeedRecyclerViewAdapter // 홀더에 데이터를 뿌려주는 Adapter
 
     // ViewPager
     private var numBanner = 3
@@ -47,13 +46,13 @@ class CategorydetailActivity: AppCompatActivity() {
         setContentView(R.layout.category_detail)
 
         // adapter init
-        adapter = CategoryDetailRecyclerViewAdapter(this)
+        adapterfeed = FeedRecyclerViewAdapter(this)
 
         // recyclerview에 연결
         category_detail_recyclerView1.layoutManager = LinearLayoutManager(this, LinearLayoutManager.HORIZONTAL, false)
 
-        category_detail_recyclerView1.adapter = adapter
-        observerData()
+        category_detail_recyclerView1.adapter = adapterfeed
+        observerFeedData()
 
         setSupportActionBar(category_detail_toolbar) // toolbar를 액션바로 이용
         supportActionBar?.setDisplayHomeAsUpEnabled(true) // 뒤로가기
@@ -68,12 +67,15 @@ class CategorydetailActivity: AppCompatActivity() {
 // RecyclerView 시작
 
     // 데이터가 변화되었을 때 자동으로 데이터 가져온 후 변화 알려주기
-    fun observerData(){
-        viewmodel.fetchData().observe(this, Observer {
-            adapter.setListData(it)
-            // 변화 알려주기
-            adapter.notifyDataSetChanged()
-        })
+    fun observerFeedData(){
+        feedviewmodel.getData().subscribe(
+            {
+                adapterfeed.setListData(it)
+            },
+            {
+                // error
+            },
+        )
     }
 
     // RecyclerView 끝

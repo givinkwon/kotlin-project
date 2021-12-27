@@ -11,7 +11,7 @@
         android:orientation="vertical">
 
         <ImageView
-            android:id="@+id/home_profile_image"
+            android:id="@+id/home_profile_image2"
             android:layout_width="130dp"
             android:layout_height="wrap_content"
             android:layout_marginLeft="15dp"
@@ -19,13 +19,13 @@
             android:src= "@drawable/ic_baseline_person_24" />
 
         <TextView
-            android:id="@+id/home_name"
+            android:id="@+id/home_name2"
             android:layout_width="130dp"
             android:layout_height="wrap_content"
             android:layout_marginLeft="15dp"/>
 
         <TextView
-            android:id="@+id/home_value"
+            android:id="@+id/home_value2"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_marginLeft="15dp"/>

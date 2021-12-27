@@ -7,10 +7,9 @@ import androidx.fragment.app.Fragment
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
-import androidx.lifecycle.Observer
 import androidx.lifecycle.ViewModelProvider
-import androidx.recyclerview.widget.LinearLayoutManager
 import androidx.viewpager2.widget.ViewPager2
+import com.example.kotlin.activity.data.recyclerviewadapter.FeedRecyclerViewAdapter
 import com.example.kotlin.activity.data.viewmodel.FeedViewModel
 
 import com.example.myapplication.R
@@ -24,7 +23,6 @@ class FragmentFeed: Fragment() {
     // fragment_home.xml 연결 => lateinit => Fragment가 먼저 생성되고 선언될 수 있음 => onCreateView에서 binding 변수를 초기화함.
     private lateinit var binding: FragmentHomeBinding
     private val viewmodel by lazy { ViewModelProvider(this).get(FeedViewModel::class.java) } // 생명주기 처리 없이 Livedata를 저장하고 있는 ViewModel
-    private lateinit var adapteruser: UserRecyclerViewAdapter // 홀더에 데이터를 뿌려주는 Adapter
     private lateinit var adapterfeed: FeedRecyclerViewAdapter // 홀더에 데이터를 뿌려주는 Adapter
 
 
@@ -55,44 +53,18 @@ class FragmentFeed: Fragment() {
         // RecyclerView 시작
         // adapter init
         adapterfeed = FeedRecyclerViewAdapter(requireActivity())
-        adapteruser = UserRecyclerViewAdapter(requireActivity())
 
         // recyclerview에 연결
         // 1. top_recyclerview
-        top_recyclerView.layoutManager = LinearLayoutManager(requireActivity(), LinearLayoutManager.HORIZONTAL, false)
-
-        top_recyclerView.adapter = adapteruser
-
-
-        // 2. higher_people_recyclerview
-        higher_people_recyclerView.layoutManager = LinearLayoutManager(requireActivity(), LinearLayoutManager.HORIZONTAL, false)
-
-        higher_people_recyclerView.adapter = adapterfeed
-
-
-        // 3. lower_people_recyclerview
-        lower_people_recyclerView.layoutManager = LinearLayoutManager(requireActivity(), LinearLayoutManager.HORIZONTAL, false)
-
-        lower_people_recyclerView.adapter = adapterfeed
-
-
-        // 4. my_people_recyclerview
-        my_people_recyclerView.layoutManager = LinearLayoutManager(requireActivity(), LinearLayoutManager.HORIZONTAL, false)
-
-        my_people_recyclerView.adapter = adapteruser
+//        top_recyclerView.layoutManager = LinearLayoutManager(requireActivity(), LinearLayoutManager.HORIZONTAL, false)
+//
+//        top_recyclerView.adapter = adapterfeed
+//
 
         // data ui update
-        observerUserData()
-        observerFeedData()
+//        observerUserData()
+//        observerFeedData()
         // RecyclerView 끝
-
-        // viewPager
-        viewPager_invite.adapter = ViewPagerAdapter(getItemList(), requireContext()) // 어댑터 생성
-        viewPager_invite.orientation = ViewPager2.ORIENTATION_HORIZONTAL // 방향을 가로로
-        with(viewPager_invite) {
-            viewPager_invite.setCurrentItem(currentPosition, false) // 현재 위치를 지정
-
-        }
 
 
         // 스크롤 자동 이동
@@ -119,21 +91,21 @@ class FragmentFeed: Fragment() {
 // RecyclerView 시작
 
     // 데이터가 변화되었을 때 자동으로 데이터 가져온 후 변화 알려주기
-    fun observerUserData(){
-        viewmodel.fetchData().observe(requireActivity(), Observer {
-            adapteruser.setListData(it)
-            // 변화 알려주기
-            adapteruser.notifyDataSetChanged()
-        })
-    }
-
-    fun observerFeedData(){
-        viewmodel.fetchData().observe(requireActivity(), Observer {
-            adapterfeed.setListData(it)
-            // 변화 알려주기
-            adapterfeed.notifyDataSetChanged()
-        })
-    }
+//    fun observerUserData(){
+//        viewmodel.fetchData().observe(requireActivity(), Observer {
+//            adapterfeed.setListData(it)
+//            // 변화 알려주기
+//            adapterfeed.notifyDataSetChanged()
+//        })
+//    }
+//
+//    fun observerFeedData(){
+//        viewmodel.fetchData().observe(requireActivity(), Observer {
+//            adapterfeed.setListData(it)
+//            // 변화 알려주기
+//            adapterfeed.notifyDataSetChanged()
+//        })
+//    }
 
     // RecyclerView 끝
 

@@ -1,6 +1,5 @@
 package com.example.myapplication.activity
 
-import android.app.Activity
 import android.content.ContentValues.TAG
 import android.content.Intent
 import android.os.Bundle
@@ -8,19 +7,15 @@ import android.util.Log
 import android.view.View
 import android.widget.Toast
 import androidx.appcompat.app.AppCompatActivity
-import androidx.core.view.isVisible
 import androidx.lifecycle.ViewModelProvider
-import com.example.kotlin.activity.Fragment.Home.RecyclerViewModel
 import com.example.kotlin.activity.data.viewmodel.SignupViewModel
 import com.example.myapplication.R
 import com.google.firebase.FirebaseException
 import com.google.firebase.FirebaseTooManyRequestsException
 import com.google.firebase.auth.*
-import com.google.firebase.ktx.Firebase
 import kotlinx.android.synthetic.main.signup.*
 import java.lang.Exception
 import java.util.concurrent.TimeUnit
-import kotlin.concurrent.thread
 
 class SignupActivity : AppCompatActivity() {
 

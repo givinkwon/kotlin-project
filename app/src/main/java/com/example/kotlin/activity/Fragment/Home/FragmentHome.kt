@@ -1,5 +1,6 @@
 package com.example.kotlin.activity.Fragment.Home
 
+import android.content.Intent
 import android.os.Bundle
 import android.os.Handler
 import android.os.Message
@@ -7,14 +8,22 @@ import androidx.fragment.app.Fragment
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
-import androidx.lifecycle.Observer
 import androidx.lifecycle.ViewModelProvider
 import androidx.recyclerview.widget.LinearLayoutManager
 import androidx.viewpager2.widget.ViewPager2
+import com.example.kotlin.activity.Fragment.Search.CategorydetailActivity
+import com.example.myapplication.activity.ContentActivity
+import com.example.kotlin.activity.data.recyclerviewadapter.FeedRecyclerViewAdapter
+import com.example.kotlin.activity.data.recyclerviewadapter.UserRecyclerViewAdapter
+import com.example.kotlin.activity.data.viewmodel.FeedViewModel
+import com.example.kotlin.activity.data.viewmodel.UserViewModel
 
 import com.example.myapplication.R
+import com.example.myapplication.activity.SignupActivity
 import com.example.myapplication.databinding.FragmentHomeBinding
 import kotlinx.android.synthetic.main.fragment_home.*
+import kotlinx.android.synthetic.main.main.*
+import kotlinx.android.synthetic.main.recycler_view_item.*
 
 
 class FragmentHome: Fragment() {
@@ -22,7 +31,8 @@ class FragmentHome: Fragment() {
     // RecyclerView
     // fragment_home.xml 연결 => lateinit => Fragment가 먼저 생성되고 선언될 수 있음 => onCreateView에서 binding 변수를 초기화함.
     private lateinit var binding: FragmentHomeBinding
-    private val viewmodel by lazy { ViewModelProvider(this).get(RecyclerViewModel::class.java) } // 생명주기 처리 없이 Livedata를 저장하고 있는 ViewModel
+    private val userviewmodel by lazy { ViewModelProvider(this).get(UserViewModel::class.java) } // 생명주기 처리 없이 Livedata를 저장하고 있는 ViewModel
+    private val feedviewmodel by lazy { ViewModelProvider(this).get(FeedViewModel::class.java) } // 생명주기 처리 없이 Livedata를 저장하고 있는 ViewModel
     private lateinit var adapteruser: UserRecyclerViewAdapter // 홀더에 데이터를 뿌려주는 Adapter
     private lateinit var adapterfeed: FeedRecyclerViewAdapter // 홀더에 데이터를 뿌려주는 Adapter
 
@@ -67,7 +77,6 @@ class FragmentHome: Fragment() {
         higher_people_recyclerView.layoutManager = LinearLayoutManager(requireActivity(), LinearLayoutManager.HORIZONTAL, false)
 
         higher_people_recyclerView.adapter = adapterfeed
-
 
         // 3. lower_people_recyclerview
         lower_people_recyclerView.layoutManager = LinearLayoutManager(requireActivity(), LinearLayoutManager.HORIZONTAL, false)
@@ -117,21 +126,29 @@ class FragmentHome: Fragment() {
 
 // RecyclerView 시작
 
-    // 데이터가 변화되었을 때 자동으로 데이터 가져온 후 변화 알려주기
+//    // 데이터가 변화되었을 때 자동으로 데이터 가져온 후 변화 알려주기
     fun observerUserData(){
-        viewmodel.fetchData().observe(requireActivity(), Observer {
-            adapteruser.setListData(it)
-            // 변화 알려주기
-            adapteruser.notifyDataSetChanged()
-        })
+
+        userviewmodel.getData().subscribe(
+            {
+                adapteruser.setListData(it)
+            },
+            {
+             // error
+            },
+
+        )
     }
 
     fun observerFeedData(){
-        viewmodel.fetchData().observe(requireActivity(), Observer {
-            adapterfeed.setListData(it)
-            // 변화 알려주기
-            adapterfeed.notifyDataSetChanged()
-        })
+        feedviewmodel.getData().subscribe(
+            {
+                adapterfeed.setListData(it)
+            },
+            {
+                // error
+            },
+        )
     }
 
     // RecyclerView 끝

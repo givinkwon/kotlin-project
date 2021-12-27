@@ -5,9 +5,10 @@ import androidx.fragment.app.Fragment
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
-import androidx.lifecycle.Observer
 import androidx.lifecycle.ViewModelProvider
 import androidx.recyclerview.widget.GridLayoutManager
+import com.example.kotlin.activity.data.recyclerviewadapter.FeedRecyclerViewAdapter
+import com.example.kotlin.activity.data.viewmodel.FeedViewModel
 import com.example.myapplication.R
 import com.example.myapplication.databinding.FragmentMypageFeedBinding
 import kotlinx.android.synthetic.main.fragment_mypage_feed.*
@@ -16,8 +17,9 @@ class FragmentMypageFeed : Fragment() {
     // RecyclerView
     // fragment_home.xml 연결 => lateinit => Fragment가 먼저 생성되고 선언될 수 있음 => onCreateView에서 binding 변수를 초기화함.
     private lateinit var binding: FragmentMypageFeedBinding
-    private val viewmodel by lazy { ViewModelProvider(this).get(MypageFeedRecyclerViewModel::class.java) } // 생명주기 처리 없이 Livedata를 저장하고 있는 ViewModel
-    private lateinit var adapterFeed: MypageFeedRecyclerViewAdapter // 홀더에 데이터를 뿌려주는 Adapter
+    private val feedviewmodel by lazy { ViewModelProvider(this).get(FeedViewModel::class.java) } // 생명주기 처리 없이 Livedata를 저장하고 있는 ViewModel
+    private lateinit var adapterfeed: FeedRecyclerViewAdapter // 홀더에 데이터를 뿌려주는 Adapter
+
 
 
     override fun onCreate(savedInstanceState: Bundle?) {
@@ -39,10 +41,10 @@ class FragmentMypageFeed : Fragment() {
 
         // RecyclerView 시작
         // adapter init
-        adapterFeed = MypageFeedRecyclerViewAdapter(requireActivity())
+        adapterfeed = FeedRecyclerViewAdapter(requireActivity())
 
         // recyclerview에 연결
-        mypage_feed_recyclerView.adapter = adapterFeed
+        mypage_feed_recyclerView.adapter = adapterfeed
 
         val gridLayoutManager = GridLayoutManager(requireActivity(), 3)
         mypage_feed_recyclerView.layoutManager = gridLayoutManager
@@ -59,11 +61,14 @@ class FragmentMypageFeed : Fragment() {
 
     // 데이터가 변화되었을 때 자동으로 데이터 가져온 후 변화 알려주기
     fun observerData(){
-        viewmodel.fetchData().observe(requireActivity(), Observer {
-            adapterFeed.setListData(it)
-            // 변화 알려주기
-            adapterFeed.notifyDataSetChanged()
-        })
+        feedviewmodel.getData().subscribe(
+            {
+                adapterfeed.setListData(it)
+            },
+            {
+                // error
+            },
+        )
     }
 
     // RecyclerView 끝
