@@ -1,18 +1,13 @@
 package com.example.kotlin.activity.invite
 
 import android.content.Context
-import android.util.Log
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
-import android.widget.ImageView
 import android.widget.TextView
-import androidx.fragment.app.Fragment
 import androidx.recyclerview.widget.RecyclerView
-import com.bumptech.glide.Glide
-import com.example.kotlin.activity.data.form.User
+import com.example.kotlin.activity.data.repository.User
 import com.example.myapplication.R
-import kotlinx.android.synthetic.main.fragment_mypage.*
 
 
 class InviteRecyclerViewAdapter(private val context: Context): RecyclerView.Adapter<InviteRecyclerViewAdapter.ViewHolder>() {

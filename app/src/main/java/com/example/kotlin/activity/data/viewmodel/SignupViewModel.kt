@@ -3,9 +3,9 @@ package com.example.kotlin.activity.data.viewmodel
 import androidx.lifecycle.LiveData
 import androidx.lifecycle.MutableLiveData
 import androidx.lifecycle.ViewModel
-import com.example.kotlin.activity.data.form.time
+import com.example.kotlin.activity.data.repository.time
 import com.google.firebase.firestore.FirebaseFirestore
-import io.grpc.util.AdvancedTlsX509TrustManager
+
 // 파이어스토어 인스턴스 초기화
 var firestore = FirebaseFirestore.getInstance()
 

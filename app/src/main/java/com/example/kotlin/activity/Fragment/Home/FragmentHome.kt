@@ -1,6 +1,5 @@
 package com.example.kotlin.activity.Fragment.Home
 
-import android.content.Intent
 import android.os.Bundle
 import android.os.Handler
 import android.os.Message
@@ -11,19 +10,13 @@ import android.view.ViewGroup
 import androidx.lifecycle.ViewModelProvider
 import androidx.recyclerview.widget.LinearLayoutManager
 import androidx.viewpager2.widget.ViewPager2
-import com.example.kotlin.activity.Fragment.Search.CategorydetailActivity
-import com.example.myapplication.activity.ContentActivity
-import com.example.kotlin.activity.data.recyclerviewadapter.FeedRecyclerViewAdapter
-import com.example.kotlin.activity.data.recyclerviewadapter.UserRecyclerViewAdapter
+import com.example.kotlin.activity.Fragment.Feed.FeedRecyclerViewAdapter
 import com.example.kotlin.activity.data.viewmodel.FeedViewModel
 import com.example.kotlin.activity.data.viewmodel.UserViewModel
 
 import com.example.myapplication.R
-import com.example.myapplication.activity.SignupActivity
 import com.example.myapplication.databinding.FragmentHomeBinding
 import kotlinx.android.synthetic.main.fragment_home.*
-import kotlinx.android.synthetic.main.main.*
-import kotlinx.android.synthetic.main.recycler_view_item.*
 
 
 class FragmentHome: Fragment() {

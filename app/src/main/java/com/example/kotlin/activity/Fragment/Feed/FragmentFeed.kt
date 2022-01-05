@@ -9,7 +9,6 @@ import android.view.View
 import android.view.ViewGroup
 import androidx.lifecycle.ViewModelProvider
 import androidx.viewpager2.widget.ViewPager2
-import com.example.kotlin.activity.data.recyclerviewadapter.FeedRecyclerViewAdapter
 import com.example.kotlin.activity.data.viewmodel.FeedViewModel
 
 import com.example.myapplication.R

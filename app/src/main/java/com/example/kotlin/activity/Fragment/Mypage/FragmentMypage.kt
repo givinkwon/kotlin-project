@@ -16,7 +16,7 @@ import com.bumptech.glide.Glide
 import com.example.kotlin.activity.Fragment.Mypage.Fragment.Fan.FragmentMypageFan
 import com.example.kotlin.activity.Fragment.Mypage.Fragment.Feed.FragmentMypageFeed
 import com.example.kotlin.activity.Fragment.Mypage.Fragment.My.FragmentMypageMy
-import com.example.kotlin.activity.data.form.User
+import com.example.kotlin.activity.data.repository.User
 import com.example.kotlin.activity.data.viewmodel.UserViewModel
 import com.example.kotlin.activity.data.viewmodel.firestore
 import com.example.myapplication.R

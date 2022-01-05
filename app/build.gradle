@@ -52,7 +52,8 @@ android {
                         'src/main/res/layouts/invite',
                         'src/main/res/layouts/search',
                         'src/main/res/layouts/content',
-                        'src/main/res'
+                        'src/main/res',
+                        'src/main/res/raw'
                     ]
         }
     }

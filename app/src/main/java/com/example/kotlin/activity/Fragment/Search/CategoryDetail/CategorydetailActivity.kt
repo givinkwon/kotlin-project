@@ -5,7 +5,7 @@ import android.view.MenuItem
 import androidx.appcompat.app.AppCompatActivity
 import androidx.lifecycle.ViewModelProvider
 import androidx.recyclerview.widget.LinearLayoutManager
-import com.example.kotlin.activity.data.recyclerviewadapter.FeedRecyclerViewAdapter
+import com.example.kotlin.activity.Fragment.Feed.FeedRecyclerViewAdapter
 import com.example.kotlin.activity.data.viewmodel.FeedViewModel
 import com.example.myapplication.R
 import com.example.myapplication.databinding.CategoryDetailBinding

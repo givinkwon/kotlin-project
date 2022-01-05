@@ -3,10 +3,7 @@ package com.example.kotlin.activity.data.viewmodel
 import androidx.lifecycle.LiveData
 import androidx.lifecycle.MutableLiveData
 import androidx.lifecycle.ViewModel
-import com.example.kotlin.activity.data.form.time
 import com.google.firebase.auth.FirebaseUser
-import com.google.firebase.firestore.FirebaseFirestore
-import io.grpc.util.AdvancedTlsX509TrustManager
 
 class LoginViewModel : ViewModel() {
     // private로 은닉
