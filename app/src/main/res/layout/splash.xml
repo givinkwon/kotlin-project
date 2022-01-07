@@ -6,7 +6,7 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:background="@color/splash_background"
-    tools:context="com.example.kotlin.activity.SplashActivity">
+    tools:context="com.example.kotlin.activity.view.SplashActivity">
 
     <ImageView
         android:scaleType="centerInside"

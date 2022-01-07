@@ -3,7 +3,7 @@ package com.example.kotlin.activity.data.viewmodel
 import androidx.lifecycle.LiveData
 import androidx.lifecycle.MutableLiveData
 import androidx.lifecycle.ViewModel
-import com.example.kotlin.activity.data.repository.time
+import com.example.kotlin.activity.data.dataclass.time
 import com.google.firebase.firestore.FirebaseFirestore
 
 // 파이어스토어 인스턴스 초기화
