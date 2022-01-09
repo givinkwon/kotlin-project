@@ -123,18 +123,18 @@ class FragmentHome: Fragment() {
 
 //    // 데이터가 변화되었을 때 자동으로 데이터 가져온 후 변화 알려주기
     fun observerUserData(){
-    userviewmodel.getUser()
+    userviewmodel.getUser() // 호출
     userviewmodel.User.observe(requireActivity(), Observer {
         adapteruser.setListData(it)
         Log.d("data", it.email!!)
-    })
+    }) //LiveData observe
     }
 
     fun observerFeedData(){
-        feedviewmodel.getFeed()
+        feedviewmodel.getFeed() // 호출
         feedviewmodel.Feed.observe(requireActivity(), Observer {
             adapterfeed.setListData(it)
-        })
+        }) //LiveData observe
     }
 
     // RecyclerView 끝

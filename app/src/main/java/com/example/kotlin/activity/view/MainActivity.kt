@@ -6,7 +6,7 @@ import android.util.Log
 import android.widget.Toast
 import androidx.appcompat.app.AppCompatActivity
 import androidx.lifecycle.ViewModelProvider
-import com.example.kotlin.activity.data.viewmodel.LoginViewModel
+import com.example.kotlin.activity.data.viewmodel.UserViewModel
 import com.example.kotlin.activity.view.Login.SignupActivity
 import com.example.myapplication.R
 import com.google.firebase.auth.FirebaseAuth
@@ -18,7 +18,7 @@ class MainActivity : AppCompatActivity() {
     private lateinit var auth: FirebaseAuth
 
     // init
-    private val viewmodel by lazy { ViewModelProvider(this).get(LoginViewModel::class.java) } // 생명주기 처리 없이 Livedata를 저장하고 있는 ViewModel
+    private val viewmodel by lazy { ViewModelProvider(this).get(UserViewModel::class.java) } // 생명주기 처리 없이 Livedata를 저장하고 있는 ViewModel
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)

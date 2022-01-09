@@ -25,31 +25,55 @@ class FeedRepo (){
             }
     }
 
-    fun getdata(): Observable<Feed> {
-        // subscribeOn => observable 객체 만들 때(create, just) io 쓰레드 활용
-        // observeon => 이후 계산 및 연산(onNext 등)은 mainthread 확인
-        return Observable.create{ emitter: ObservableEmitter<Feed> ->
-            firestore.collection("Feed")
-                .addSnapshotListener { value, e ->
-                    if (e != null) {
-                        Log.w("우옹", "Listen failed.", e)
-                        return@addSnapshotListener
-                    }
+    fun getdata(filter: String = ""): Observable<Feed> {
 
-                    var FeedData = mutableListOf<Feed>() // 빈 list 선언
-                    for (doc in value!!) {
-
-                        val getData = doc.toObject(Feed::class.java)
-//                        FeedData.add(getData)
-                        getData?.let { currentFeedDoc ->
-                            emitter.onNext(currentFeedDoc)
+        if (filter.equals("")) {
+            // subscribeOn => observable 객체 만들 때(create, just) io 쓰레드 활용
+            // observeon => 이후 계산 및 연산(onNext 등)은 mainthread 확인
+            return Observable.create { emitter: ObservableEmitter<Feed> ->
+                firestore.collection("Feed")
+                    .addSnapshotListener { value, e ->
+                        if (e != null) {
+                            Log.w("우옹", "Listen failed.", e)
+                            return@addSnapshotListener
                         }
 
+                        for (doc in value!!) {
+
+                            val getData = doc.toObject(Feed::class.java)
+//                        FeedData.add(getData)
+                            getData?.let { currentFeedDoc ->
+                                emitter.onNext(currentFeedDoc)
+                            }
+
+                        }
                     }
-//                    FeedData.let { currentFeedData -> emitter.onNext(currentFeedData) }
-                }
-        }.subscribeOn(Schedulers.io()).observeOn(AndroidSchedulers.mainThread())
-        // 쓰레드 사용 시 emitter type 명시 필요
+            }.subscribeOn(Schedulers.io()).observeOn(AndroidSchedulers.mainThread())
+            // 쓰레드 사용 시 emitter type 명시 필요
+        } else {
+            // filter가 있을 때
+            return Observable.create { emitter: ObservableEmitter<Feed> ->
+                firestore.collection("Feed").whereEqualTo("filter", filter)
+                    .addSnapshotListener { value, e ->
+                        if (e != null) {
+                            Log.w("우옹", "Listen failed.", e)
+                            return@addSnapshotListener
+                        }
+
+                        for (doc in value!!) {
+
+                            val getData = doc.toObject(Feed::class.java)
+//                        FeedData.add(getData)
+                            getData?.let { currentFeedDoc ->
+                                emitter.onNext(currentFeedDoc)
+                            }
+
+                        }
+                    }
+            }.subscribeOn(Schedulers.io()).observeOn(AndroidSchedulers.mainThread())
+
+
+        }
     }
 
     fun updatedata(DocId: String, UpdateField : String, UpdateData : String) {

@@ -26,10 +26,10 @@ class FeedLikeRepo() {
             }
     }
 
-    fun getdata(): Observable<MutableList<FeedLike>> {
+    fun getdata(): Observable<FeedLike> {
         // subscribeOn => observable 객체 만들 때(create, just) io 쓰레드 활용
         // observeon => 이후 계산 및 연산(onNext 등)은 mainthread 확인
-        return Observable.create{ emitter: ObservableEmitter<MutableList<FeedLike>> ->
+        return Observable.create{ emitter: ObservableEmitter<FeedLike> ->
             firestore.collection("FeedLike")
                 .addSnapshotListener { value, e ->
                     if (e != null) {
@@ -37,18 +37,16 @@ class FeedLikeRepo() {
                         return@addSnapshotListener
                     }
 
-                    var FeedLikeData = mutableListOf<FeedLike>() // 빈 list 선언
                     for (doc in value!!) {
 
                         val getData = doc.toObject(FeedLike::class.java)
-                        FeedLikeData.add(getData)
-//                        getData?.let { currentFeedDoc ->
-//                            emitter.onNext(currentFeedDoc)
-//                        }
+
+                        getData?.let { currentFeedDoc ->
+                            emitter.onNext(currentFeedDoc)
+                        }
 
                     }
-                    FeedLikeData.let { currentFeedLikeData -> emitter.onNext(currentFeedLikeData) }
-                }
+             }
         }.subscribeOn(Schedulers.io()).observeOn(AndroidSchedulers.mainThread())
         // 쓰레드 사용 시 emitter type 명시 필요
     }

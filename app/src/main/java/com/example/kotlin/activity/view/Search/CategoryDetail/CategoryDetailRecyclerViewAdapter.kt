@@ -12,11 +12,11 @@ import com.example.myapplication.R
 
 
 class CategoryDetailRecyclerViewAdapter(private val context: Context): RecyclerView.Adapter<CategoryDetailRecyclerViewAdapter.ViewHolder>() {
-    private var userList = mutableListOf<Feed>()
+    private var categoryList = mutableListOf<Feed>()
 
     // data init
     fun setListData(data:MutableList<Feed>){
-        userList = data
+        categoryList = data
     }
 
     // 뷰 홀더 만들기 => recycler_view_item.xml과 연결하여 view로 변환
@@ -27,7 +27,7 @@ class CategoryDetailRecyclerViewAdapter(private val context: Context): RecyclerV
 
     // 데이터를 바인딩하여 뷰에 뿌려질 수 있도록
     override fun onBindViewHolder(holder: ViewHolder, position: Int) {
-        val user : Feed = userList[position]
+        val user : Feed = categoryList[position]
         Log.d("NO..", "${position}")
         holder.name.text = user.content
         holder.age.text = user.title
@@ -38,7 +38,7 @@ class CategoryDetailRecyclerViewAdapter(private val context: Context): RecyclerV
 
     // 화면에 가져올 아이템 개수 세기
     override fun getItemCount(): Int {
-        return userList.size
+        return categoryList.size
     }
 
     inner class ViewHolder(itemView: View):RecyclerView.ViewHolder(itemView){

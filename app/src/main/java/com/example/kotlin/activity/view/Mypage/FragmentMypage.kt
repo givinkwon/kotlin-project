@@ -18,7 +18,6 @@ import com.example.kotlin.activity.view.Mypage.Feed.FragmentMypageFeed
 import com.example.kotlin.activity.view.Mypage.My.FragmentMypageMy
 import com.example.kotlin.activity.data.dataclass.User
 import com.example.kotlin.activity.data.viewmodel.UserViewModel
-import com.example.kotlin.activity.data.viewmodel.firestore
 import com.example.myapplication.R
 import com.google.firebase.auth.FirebaseAuth
 import com.google.firebase.firestore.FirebaseFirestore
@@ -37,6 +36,7 @@ class FragmentMypage : Fragment() {
     private lateinit var auth: FirebaseAuth
     private val viewmodel by lazy { ViewModelProvider(this).get(UserViewModel::class.java) } // 생명주기 처리 없이 Livedata를 저장하고 있는 ViewModel
     private var currentUserData : User? = null
+    var firestore = FirebaseFirestore.getInstance()
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)

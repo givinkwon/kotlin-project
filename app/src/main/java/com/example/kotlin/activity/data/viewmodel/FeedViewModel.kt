@@ -21,18 +21,18 @@ import io.reactivex.Observable
 class FeedViewModel() : ViewModel() {
       // init
       var Feed = MutableLiveData<Feed>()
-      var FeedLike = MutableLiveData<MutableList<FeedLike>>()
-      var FeedReply = MutableLiveData<MutableList<FeedReply>>()
-      var FeedImage = MutableLiveData<MutableList<FeedImage>>()
+      var FeedLike = MutableLiveData<FeedLike>()
+      var FeedReply = MutableLiveData<FeedReply>()
+      var FeedImage = MutableLiveData<FeedImage>()
 
       private val FeedRepo: FeedRepo by lazy { FeedRepo() }
       private val FeedLikeRepo: FeedLikeRepo by lazy { FeedLikeRepo() }
       private val FeedReplyRepo: FeedReplyRepo by lazy { FeedReplyRepo() }
       private val FeedImageRepo: FeedImageRepo by lazy { FeedImageRepo() }
 
-      fun getFeed() {
+      fun getFeed(filter: String = "") {
           // subscribe
-          FeedRepo.getdata().subscribe(
+          FeedRepo.getdata(filter).subscribe(
               {
                   Feed.value = it
               },

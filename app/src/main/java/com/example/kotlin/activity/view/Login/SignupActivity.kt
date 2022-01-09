@@ -8,7 +8,7 @@ import android.view.View
 import android.widget.Toast
 import androidx.appcompat.app.AppCompatActivity
 import androidx.lifecycle.ViewModelProvider
-import com.example.kotlin.activity.data.viewmodel.SignupViewModel
+import com.example.kotlin.activity.data.viewmodel.UserViewModel
 import com.example.kotlin.activity.view.MainActivity
 import com.example.myapplication.R
 import com.google.firebase.FirebaseException
@@ -21,7 +21,7 @@ import java.util.concurrent.TimeUnit
 class SignupActivity : AppCompatActivity() {
 
     // init
-    private val viewmodel by lazy { ViewModelProvider(this).get(SignupViewModel::class.java) } // 생명주기 처리 없이 Livedata를 저장하고 있는 ViewModel
+    private val viewmodel by lazy { ViewModelProvider(this).get(UserViewModel::class.java) } // 생명주기 처리 없이 Livedata를 저장하고 있는 ViewModel
 
     // component 숨기기 보이기
     fun showHide(view:View) {
