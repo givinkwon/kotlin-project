@@ -27,10 +27,8 @@ class FragmentSearch: Fragment() {
     // fragment_home.xml 연결 => lateinit => Fragment가 먼저 생성되고 선언될 수 있음 => onCreateView에서 binding 변수를 초기화함.
     private lateinit var binding: FragmentSearchBinding
     private val categoryviewmodel by lazy { ViewModelProvider(this).get(CategoryViewModel::class.java) } // 생명주기 처리 없이 Livedata를 저장하고 있는 ViewModel
-    private val feedviewmodel by lazy { ViewModelProvider(this).get(FeedViewModel::class.java) } // 생명주기 처리 없이 Livedata를 저장하고 있는 ViewModel
 
     private lateinit var adaptercategory: CategoryRecyclerViewAdapter // 홀더에 데이터를 뿌려주는 Adapter
-    private lateinit var adaptercategoryfeed: CategoryFeedRecyclerViewAdapter // 홀더에 데이터를 뿌려주는 Adapter
 
     // ViewPager
     private var numBanner = 3
@@ -57,22 +55,13 @@ class FragmentSearch: Fragment() {
 
         // RecyclerView 시작
         // adapter init
-        adaptercategory = CategoryRecyclerViewAdapter(requireActivity())
+        adaptercategory = CategoryRecyclerViewAdapter(requireActivity(),this)
 
         // recyclerview에 연결
         // 1. category_recyclerview
         search_categoryrecyclerView.layoutManager = LinearLayoutManager(requireActivity(), LinearLayoutManager.VERTICAL, false)
-
         search_categoryrecyclerView.adapter = adaptercategory
-
-
-        // 2. category_feedrecyclerview
-        search_categoryfeedrecyclerView.layoutManager = LinearLayoutManager(requireActivity(), LinearLayoutManager.VERTICAL, false)
-
-        search_categoryfeedrecyclerView.adapter = adaptercategory
-
         observerCategoryData()
-
         // RecyclerView 끝
 
     }
@@ -86,11 +75,7 @@ class FragmentSearch: Fragment() {
         categoryviewmodel.getCategory() // 호출
         categoryviewmodel.Category.observe(requireActivity(), Observer {
             adaptercategory.setListData(it)
-            feedviewmodel.getFeed(it.value.toString())
-            feedviewmodel.Feed.observe(requireActivity(), Observer {
-                adaptercategoryfeed.setListData(it)
-            }) //LiveData obs
-        }) //LiveData observe
+        })
 
     }
 
@@ -98,8 +83,5 @@ class FragmentSearch: Fragment() {
 
     // RecyclerView 끝
 
-    companion object {
-
-    }
 }
 

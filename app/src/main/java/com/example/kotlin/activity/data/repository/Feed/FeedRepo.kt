@@ -28,6 +28,7 @@ class FeedRepo (){
     fun getdata(filter: String = ""): Observable<Feed> {
 
         if (filter.equals("")) {
+
             // subscribeOn => observable 객체 만들 때(create, just) io 쓰레드 활용
             // observeon => 이후 계산 및 연산(onNext 등)은 mainthread 확인
             return Observable.create { emitter: ObservableEmitter<Feed> ->
@@ -59,9 +60,8 @@ class FeedRepo (){
                             Log.w("우옹", "Listen failed.", e)
                             return@addSnapshotListener
                         }
-
                         for (doc in value!!) {
-
+//                            Log.d("doc", doc.toString())
                             val getData = doc.toObject(Feed::class.java)
 //                        FeedData.add(getData)
                             getData?.let { currentFeedDoc ->

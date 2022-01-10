@@ -8,4 +8,5 @@ class Feed (
     val createdAt: java.util.Date = time.getTime() as java.util.Date,
     val user: String? = null,
     val thumbnail: String? = null,
+    val filter: String? = null,
 )

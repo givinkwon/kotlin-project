@@ -11,17 +11,19 @@ import androidx.recyclerview.widget.RecyclerView
 import com.bumptech.glide.Glide
 import com.example.kotlin.activity.data.dataclass.Category
 import com.example.kotlin.activity.data.dataclass.Feed.Feed
+import com.example.kotlin.activity.data.dataclass.User
 import com.example.myapplication.R
 
 // 1. RecyclerViewAdapter는 view(xml)이 아닌 data model에 따라 정의한다
 // 2. 범용성을 확보하기 위해 input parameter로 activity/fragment를 받아 view를 정의할 때 if문으로 재설정
 // 3. 모든 데이터를 받아오되, container에 따라 data를 다르게 한다.
 
-class CategoryFeedRecyclerViewAdapter(private val context: Context): RecyclerView.Adapter<CategoryFeedRecyclerViewAdapter.ViewHolder>() {
+class CategoryFeedRecyclerViewAdapter(private val context: Context, Postion: Int): RecyclerView.Adapter<CategoryFeedRecyclerViewAdapter.ViewHolder>() {
     private var feedList = mutableListOf<Feed>()
 
     // data init
     fun setListData(data: Feed){
+        Log.d("feeddata", data.toString())
         feedList.add(data)
         notifyDataSetChanged()
     }
