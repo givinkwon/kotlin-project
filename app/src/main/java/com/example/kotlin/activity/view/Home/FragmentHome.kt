@@ -29,8 +29,8 @@ class FragmentHome: Fragment() {
     private lateinit var binding: FragmentHomeBinding
     private val userviewmodel by lazy { ViewModelProvider(this).get(UserViewModel::class.java) } // 생명주기 처리 없이 Livedata를 저장하고 있는 ViewModel
     private val feedviewmodel by lazy { ViewModelProvider(this).get(FeedViewModel::class.java) } // 생명주기 처리 없이 Livedata를 저장하고 있는 ViewModel
-    private lateinit var adapteruser: UserRecyclerViewAdapter // 홀더에 데이터를 뿌려주는 Adapter
-    private lateinit var adapterfeed: FeedRecyclerViewAdapter // 홀더에 데이터를 뿌려주는 Adapter
+    private lateinit var adapteruser: HomeUserRecyclerViewAdapter // 홀더에 데이터를 뿌려주는 Adapter
+    private lateinit var adapterfeed: HomeFeedRecyclerViewAdapter // 홀더에 데이터를 뿌려주는 Adapter
 
 
     // ViewPager
@@ -65,8 +65,8 @@ class FragmentHome: Fragment() {
 
         // RecyclerView 시작
         // adapter init
-        adapterfeed = FeedRecyclerViewAdapter(requireActivity())
-        adapteruser = UserRecyclerViewAdapter(requireActivity())
+        adapterfeed = HomeFeedRecyclerViewAdapter(requireActivity())
+        adapteruser = HomeUserRecyclerViewAdapter(requireActivity())
 
         // recyclerview에 연결
         // 1. top_recyclerview

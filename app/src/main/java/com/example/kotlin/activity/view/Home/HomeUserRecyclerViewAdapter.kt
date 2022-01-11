@@ -16,7 +16,7 @@ import com.example.myapplication.R
 // 2. 범용성을 확보하기 위해 input parameter로 activity/fragment를 받아 view를 정의할 때 if문으로 재설정
 // 3. 모든 데이터를 받아오되, container에 따라 data를 다르게 한다.
 
-class UserRecyclerViewAdapter(private val context: Context): RecyclerView.Adapter<UserRecyclerViewAdapter.ViewHolder>() {
+class HomeUserRecyclerViewAdapter(private val context: Context): RecyclerView.Adapter<HomeUserRecyclerViewAdapter.ViewHolder>() {
     private var userList = mutableListOf<User>()
 
     // data init

@@ -1,6 +1,7 @@
 package com.example.kotlin.activity.view.Search
 
 import android.content.Context
+import android.content.Intent
 import android.util.Log
 import android.view.LayoutInflater
 import android.view.View
@@ -13,6 +14,7 @@ import com.example.kotlin.activity.data.dataclass.Category
 import com.example.kotlin.activity.data.dataclass.Feed.Feed
 import com.example.kotlin.activity.data.dataclass.User
 import com.example.myapplication.R
+import com.example.myapplication.activity.ContentActivity
 
 // 1. RecyclerViewAdapter는 view(xml)이 아닌 data model에 따라 정의한다
 // 2. 범용성을 확보하기 위해 input parameter로 activity/fragment를 받아 view를 정의할 때 if문으로 재설정
@@ -31,6 +33,12 @@ class CategoryFeedRecyclerViewAdapter(private val context: Context, Postion: Int
     // 뷰 홀더 만들기 => recycler_view_item.xml과 연결하여 view로 변환
     override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): ViewHolder {
         val view = LayoutInflater.from(context).inflate(R.layout.recycler_view_search_feed,parent, false)
+
+        view.setOnClickListener {
+            val intent = Intent(context, ContentActivity::class.java)
+            context.startActivity(intent)
+        }
+
         return ViewHolder(view)
     }
 
