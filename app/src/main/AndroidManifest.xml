@@ -46,7 +46,7 @@
         <activity android:name="com.example.kotlin.activity.view.Login.SignupActivity"></activity>
         <activity android:name="com.example.kotlin.activity.view.HomeActivity"></activity>
         <activity android:name=".activity.InviteActivity"></activity>
-        <activity android:name="com.example.kotlin.activity.Fragment.Search.CategorydetailActivity"></activity>
+        <activity android:name="com.example.kotlin.activity.Fragment.Search.SearchDetailActivity"></activity>
         <activity
             android:name="com.example.kotlin.activity.view.SplashActivity"
             android:theme="@style/Splash">

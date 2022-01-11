@@ -37,7 +37,7 @@ class FeedRecyclerViewAdapter(private val context: Context): RecyclerView.Adapte
     override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): ViewHolder {
         // HomeActivty에서 사용하는 경우
         if(context.toString().contains("HomeActivity")) {
-            val view = LayoutInflater.from(context).inflate(R.layout.recycler_view_feed,parent, false)
+            val view = LayoutInflater.from(context).inflate(R.layout.recycler_view_search_feed,parent, false)
 
             view.setOnClickListener {
                 val intent = Intent(context, ContentActivity::class.java)
@@ -46,7 +46,7 @@ class FeedRecyclerViewAdapter(private val context: Context): RecyclerView.Adapte
 
             return ViewHolder(view)
         } else {
-            val view = LayoutInflater.from(context).inflate(R.layout.recycler_view_feed,parent, false)
+            val view = LayoutInflater.from(context).inflate(R.layout.recycler_view_search_feed,parent, false)
             return ViewHolder(view)
         }
 
@@ -72,7 +72,7 @@ class FeedRecyclerViewAdapter(private val context: Context): RecyclerView.Adapte
     }
 
     inner class ViewHolder(itemView: View):RecyclerView.ViewHolder(itemView){
-        var thumbnail : ImageView = itemView.findViewById(R.id.home_profile_image2)
+        var thumbnail : ImageView = itemView.findViewById(R.id.search_feed_image)
 
 
     }

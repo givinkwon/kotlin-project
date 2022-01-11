@@ -1,18 +1,22 @@
 package com.example.kotlin.activity.view.Search
 
 import android.content.Context
+import android.content.Intent
 import android.util.Log
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
+import android.widget.Button
 import android.widget.ImageView
 import android.widget.TextView
+import androidx.core.content.ContextCompat.startActivity
 import androidx.lifecycle.LifecycleOwner
 import androidx.lifecycle.Observer
 import androidx.lifecycle.ViewModelProvider
 import androidx.recyclerview.widget.LinearLayoutManager
 import androidx.recyclerview.widget.RecyclerView
 import com.bumptech.glide.Glide
+import com.example.kotlin.activity.Fragment.Search.SearchDetailActivity
 import com.example.kotlin.activity.data.dataclass.Category
 import com.example.kotlin.activity.data.viewmodel.FeedViewModel
 import com.example.myapplication.R
@@ -45,6 +49,13 @@ class CategoryRecyclerViewAdapter(private val context: Context, Fragment: Fragme
         Log.d("data", category.value.toString())
         holder.value.text = category.value
 
+        // button
+        holder.detailbutton.setOnClickListener(){
+            val nextIntent = Intent(context, SearchDetailActivity::class.java)
+            nextIntent.putExtra("SelectedCategory", category.value.toString()) // 선택된 카테고리 전달
+            context.startActivity(nextIntent)
+
+        }
         // sub recyclerview => setadapter
         val mAdapter = CategoryFeedRecyclerViewAdapter(context, position)
         holder.sub.adapter = mAdapter
@@ -69,7 +80,9 @@ class CategoryRecyclerViewAdapter(private val context: Context, Fragment: Fragme
 
     inner class ViewHolder(itemView: View):RecyclerView.ViewHolder(itemView){
         val value : TextView = itemView.findViewById(R.id.search_value)
+        val detailbutton : Button = itemView.findViewById(R.id.search_detail)
         val sub : RecyclerView = itemView.findViewById(R.id.search_categoryfeedrecyclerView)
+
     }
 
 }

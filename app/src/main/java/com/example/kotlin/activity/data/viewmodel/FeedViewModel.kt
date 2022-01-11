@@ -30,6 +30,8 @@ class FeedViewModel() : ViewModel() {
       private val FeedReplyRepo: FeedReplyRepo by lazy { FeedReplyRepo() }
       private val FeedImageRepo: FeedImageRepo by lazy { FeedImageRepo() }
 
+     var SelectedCategory = MutableLiveData<String>()
+
       fun getFeed(filter: String = "") {
           // subscribe
           FeedRepo.getdata(filter).subscribe(
@@ -75,4 +77,5 @@ class FeedViewModel() : ViewModel() {
                 // error
             },
         )}
+
 }

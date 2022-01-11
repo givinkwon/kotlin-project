@@ -1,5 +1,6 @@
 package com.example.kotlin.activity.view.Home
 
+import android.content.Context
 import android.os.Bundle
 import android.os.Handler
 import android.os.Message
@@ -38,9 +39,15 @@ class FragmentHome: Fragment() {
     private var myHandler = MyHandler()
     private val intervalTime = 1500.toLong() // 몇초 간격으로 페이지를 넘길것인지 (1500 = 1.5초)
 
+    override fun onAttach(context: Context) {
+        super.onAttach(context)
+
+    }
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
-
+        // data ui update
+        observerUserData()
+        observerFeedData()
     }
 
     override fun onCreateView(
@@ -52,7 +59,7 @@ class FragmentHome: Fragment() {
         return binding.root // binding.root == Frament_home.xml
     }
 
-    // view가 만들어지고 나서
+    // view가 만들어지고 나서 => 여러 번 호출이 가능함
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
 
@@ -84,10 +91,8 @@ class FragmentHome: Fragment() {
 
         my_people_recyclerView.adapter = adapteruser
 
-        // data ui update
-        observerUserData()
-        observerFeedData()
         // RecyclerView 끝
+
 
         // viewPager
         viewPager_invite.adapter = ViewPagerAdapter(getItemList(), requireContext()) // 어댑터 생성
@@ -134,6 +139,7 @@ class FragmentHome: Fragment() {
         feedviewmodel.getFeed() // 호출
         feedviewmodel.Feed.observe(requireActivity(), Observer {
             adapterfeed.setListData(it)
+            Log.d("data", it.toString())
         }) //LiveData observe
     }
 

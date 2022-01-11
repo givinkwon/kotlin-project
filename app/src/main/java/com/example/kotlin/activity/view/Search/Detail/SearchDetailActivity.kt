@@ -1,25 +1,29 @@
 package com.example.kotlin.activity.Fragment.Search
 
+import android.content.Intent
 import android.os.Bundle
+import android.util.Log
 import android.view.MenuItem
 import androidx.appcompat.app.AppCompatActivity
 import androidx.lifecycle.Observer
 import androidx.lifecycle.ViewModelProvider
+import androidx.recyclerview.widget.GridLayoutManager
 import androidx.recyclerview.widget.LinearLayoutManager
 import com.example.kotlin.activity.view.Feed.FeedRecyclerViewAdapter
 import com.example.kotlin.activity.data.viewmodel.FeedViewModel
+import com.example.kotlin.activity.view.Search.Detail.SearchDetailRecyclerViewAdapter
 import com.example.myapplication.R
-import com.example.myapplication.databinding.CategoryDetailBinding
-import kotlinx.android.synthetic.main.category_detail.*
+import com.example.myapplication.databinding.SearchDetailBinding
+import kotlinx.android.synthetic.main.search_detail.*
 
 
-class CategorydetailActivity: AppCompatActivity() {
+class SearchDetailActivity: AppCompatActivity() {
 
     // RecyclerView
     // fragment_home.xml 연결 => lateinit => Fragment가 먼저 생성되고 선언될 수 있음 => onCreateView에서 binding 변수를 초기화함.
-    private lateinit var binding: CategoryDetailBinding
+    private lateinit var binding: SearchDetailBinding
     private val feedviewmodel by lazy { ViewModelProvider(this).get(FeedViewModel::class.java) } // 생명주기 처리 없이 Livedata를 저장하고 있는 ViewModel
-    private lateinit var adapterfeed: FeedRecyclerViewAdapter // 홀더에 데이터를 뿌려주는 Adapter
+    private lateinit var adaptersearchdetail: SearchDetailRecyclerViewAdapter // 홀더에 데이터를 뿌려주는 Adapter
 
     // ViewPager
     private var numBanner = 3
@@ -44,21 +48,26 @@ class CategorydetailActivity: AppCompatActivity() {
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         // RecyclerView 시작
-        setContentView(R.layout.category_detail)
+        setContentView(R.layout.search_detail)
 
         // adapter init
-        adapterfeed = FeedRecyclerViewAdapter(this)
+        adaptersearchdetail = SearchDetailRecyclerViewAdapter(this)
 
         // recyclerview에 연결
-        category_detail_recyclerView1.layoutManager = LinearLayoutManager(this, LinearLayoutManager.HORIZONTAL, false)
+        search_detail_recyclerView.layoutManager = GridLayoutManager(this, 3)
 
-        category_detail_recyclerView1.adapter = adapterfeed
-        observerFeedData()
+        search_detail_recyclerView.adapter = adaptersearchdetail
 
+        // intent data 가져오기
+        if(intent.hasExtra("SelectedCategory")) { //해당 키값을 가진 intent가 정보를 가지고 있다면 실행
+            var SelectedCategory = intent.getStringExtra("SelectedCategory")
+            observerFeedData(SelectedCategory.toString())
+        }
         setSupportActionBar(category_detail_toolbar) // toolbar를 액션바로 이용
         supportActionBar?.setDisplayHomeAsUpEnabled(true) // 뒤로가기
         supportActionBar?.setDisplayShowTitleEnabled(false) // 테마에 있는 제목 지우기
         category_detail_toolbar.title = "카테고리" // 제목 새롭게 설정하기
+
 
     }
 
@@ -68,9 +77,14 @@ class CategorydetailActivity: AppCompatActivity() {
 // RecyclerView 시작
 
     // 데이터가 변화되었을 때 자동으로 데이터 가져온 후 변화 알려주기
-    fun observerFeedData(){
+    fun observerFeedData(SelectedCategory : String){
+        feedviewmodel.getFeed() // 호출
         feedviewmodel.Feed.observe(this, Observer {
-            adapterfeed.setListData(it)
+            // 같을 때만 데이터 추가
+            if (it.filter == SelectedCategory) {
+                adaptersearchdetail.setListData(it)
+            }
+            Log.d("data", "${it.filter} ${SelectedCategory}")
         })
     }
 

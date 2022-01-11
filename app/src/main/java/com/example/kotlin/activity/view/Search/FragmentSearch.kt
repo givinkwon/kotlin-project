@@ -2,7 +2,6 @@ package com.example.kotlin.activity.view.Search
 
 import android.content.Intent
 import android.os.Bundle
-import android.util.Log
 import androidx.fragment.app.Fragment
 import android.view.LayoutInflater
 import android.view.View
@@ -10,14 +9,13 @@ import android.view.ViewGroup
 import androidx.lifecycle.Observer
 import androidx.lifecycle.ViewModelProvider
 import androidx.recyclerview.widget.LinearLayoutManager
-import com.example.kotlin.activity.view.Feed.FeedRecyclerViewAdapter
-import com.example.kotlin.activity.Fragment.Search.CategorydetailActivity
+import com.example.kotlin.activity.Fragment.Search.SearchDetailActivity
 import com.example.kotlin.activity.data.viewmodel.CategoryViewModel
-import com.example.kotlin.activity.data.viewmodel.FeedViewModel
+import com.example.kotlin.activity.view.Login.SignupActivity
 
 import com.example.myapplication.databinding.FragmentSearchBinding
+import com.example.myapplication.databinding.RecyclerViewSearchBinding
 import kotlinx.android.synthetic.main.fragment_search.*
-import kotlinx.android.synthetic.main.fragment_search.search_categoryrecyclerView
 import kotlinx.android.synthetic.main.recycler_view_search.*
 
 
@@ -37,7 +35,7 @@ class FragmentSearch: Fragment() {
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
-
+        observerCategoryData()
     }
 
     override fun onCreateView(
@@ -61,9 +59,9 @@ class FragmentSearch: Fragment() {
         // 1. category_recyclerview
         search_categoryrecyclerView.layoutManager = LinearLayoutManager(requireActivity(), LinearLayoutManager.VERTICAL, false)
         search_categoryrecyclerView.adapter = adaptercategory
-        observerCategoryData()
-        // RecyclerView 끝
 
+
+        // RecyclerView 끝
     }
 
 

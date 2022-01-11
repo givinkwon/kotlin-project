@@ -44,14 +44,13 @@ android {
 
                         'src/main/res/layouts/signup',
                         'src/main/res/layouts/home',
-                        'src/main/res/layouts/home/layout/feed',
-                        'src/main/res/layouts/home/layout/home',
-                        'src/main/res/layouts/home/layout/mypage',
-                        'src/main/res/layouts/home/layout/search',
-                        'src/main/res/layouts/home/layout/write',
                         'src/main/res/layouts/invite',
                         'src/main/res/layouts/search',
+                        'src/main/res/layouts/search/layout/detail',
                         'src/main/res/layouts/content',
+                        'src/main/res/layouts/write',
+                        'src/main/res/layouts/mypage',
+                        'src/main/res/layouts',
                         'src/main/res',
                         'src/main/res/raw'
                     ]
