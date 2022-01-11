@@ -7,14 +7,12 @@ import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import android.widget.ImageView
-import android.widget.TextView
 import androidx.recyclerview.widget.RecyclerView
 import com.bumptech.glide.Glide
-import com.example.kotlin.activity.data.dataclass.Category
 import com.example.kotlin.activity.data.dataclass.Feed.Feed
-import com.example.kotlin.activity.data.dataclass.User
+import com.example.kotlin.activity.view.HomeActivity
+import com.example.kotlin.activity.view.Video.FragmentVideo
 import com.example.myapplication.R
-import com.example.myapplication.activity.ContentActivity
 
 // 1. RecyclerViewAdapter는 view(xml)이 아닌 data model에 따라 정의한다
 // 2. 범용성을 확보하기 위해 input parameter로 activity/fragment를 받아 view를 정의할 때 if문으로 재설정
@@ -35,8 +33,14 @@ class CategoryFeedRecyclerViewAdapter(private val context: Context, Postion: Int
         val view = LayoutInflater.from(context).inflate(R.layout.recycler_view_search_feed,parent, false)
 
         view.setOnClickListener {
-            val intent = Intent(context, ContentActivity::class.java)
+            val intent = Intent(context, HomeActivity::class.java) // Home으로 이동 후 fragment 전환
+            intent.putExtra("transfer", true)
+            //FLAG_ACTIVITY_NEW_TASK : 새로운 TASK를 생성합니다.
+            //FLAG_ACTIVITY_CLEAR_TASK : 현재 TASK를 비웁니다.
+            //FLAG_ACTIVITY_CLAER_TOP : 호출하려는 액티비티가 이미 스택에 쌓여있을 때, 새로 인스턴스를 생성하지 않고 기존의 액티비티를 포그라운드로 가져옵니다. 그리고 액티비티스택의 최상단부터 포그라운드로 가져올 액티비티까지의 모든 액티비티를 삭제합니다.
+            intent.flags = Intent.FLAG_ACTIVITY_NEW_TASK or Intent.FLAG_ACTIVITY_CLEAR_TASK or Intent.FLAG_ACTIVITY_CLEAR_TOP //액티비티 스택제거
             context.startActivity(intent)
+
         }
 
         return ViewHolder(view)

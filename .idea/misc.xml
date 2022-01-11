@@ -3,11 +3,18 @@
   <component name="DesignSurface">
     <option name="filePathToZoomLevelMap">
       <map>
+        <entry key="..\:/Users/BNN/Documents/GitHub/kotlin-project/app/src/main/res/layout/home.xml" value="0.17806484295845998" />
+        <entry key="..\:/Users/BNN/Documents/GitHub/kotlin-project/app/src/main/res/layout/loading.xml" value="0.17806484295845998" />
+        <entry key="..\:/Users/BNN/Documents/GitHub/kotlin-project/app/src/main/res/layout/main.xml" value="0.17806484295845998" />
+        <entry key="..\:/Users/BNN/Documents/GitHub/kotlin-project/app/src/main/res/layouts/content/layout/content.xml" value="0.17806484295845998" />
+        <entry key="..\:/Users/BNN/Documents/GitHub/kotlin-project/app/src/main/res/layouts/feed/layout/fragment_feed.xml" value="0.1852355072463768" />
         <entry key="..\:/Users/BNN/Documents/GitHub/kotlin-project/app/src/main/res/layouts/home/layout/feed/layout/fragment_feed.xml" value="0.19067028985507245" />
         <entry key="..\:/Users/BNN/Documents/GitHub/kotlin-project/app/src/main/res/layouts/home/layout/feed/layout/recycler_view_feed.xml" value="0.19067028985507245" />
+        <entry key="..\:/Users/BNN/Documents/GitHub/kotlin-project/app/src/main/res/layouts/home/layout/fragment_home.xml" value="0.17806484295845998" />
         <entry key="..\:/Users/BNN/Documents/GitHub/kotlin-project/app/src/main/res/layouts/home/layout/home/layout/fragment_home.xml" value="0.19067028985507245" />
         <entry key="..\:/Users/BNN/Documents/GitHub/kotlin-project/app/src/main/res/layouts/home/layout/home/layout/item_home_banner.xml" value="0.19067028985507245" />
         <entry key="..\:/Users/BNN/Documents/GitHub/kotlin-project/app/src/main/res/layouts/home/layout/home/layout/recycler_view_user.xml" value="0.19067028985507245" />
+        <entry key="..\:/Users/BNN/Documents/GitHub/kotlin-project/app/src/main/res/layouts/home/layout/item_home_banner.xml" value="0.17806484295845998" />
         <entry key="..\:/Users/BNN/Documents/GitHub/kotlin-project/app/src/main/res/layouts/home/layout/search/layout/category_detail.xml" value="0.19067028985507245" />
         <entry key="..\:/Users/BNN/Documents/GitHub/kotlin-project/app/src/main/res/layouts/home/layout/search/layout/fragment_search.xml" value="0.2046875" />
         <entry key="..\:/Users/BNN/Documents/GitHub/kotlin-project/app/src/main/res/layouts/home/layout/search/layout/recycler_view_search.xml" value="0.19067028985507245" />
@@ -17,6 +24,8 @@
         <entry key="..\:/Users/BNN/Documents/GitHub/kotlin-project/app/src/main/res/layouts/search/layout/detail/layout/search_detail.xml" value="0.1852355072463768" />
         <entry key="..\:/Users/BNN/Documents/GitHub/kotlin-project/app/src/main/res/layouts/search/layout/recycler_view_search.xml" value="0.17806484295845998" />
         <entry key="..\:/Users/BNN/Documents/GitHub/kotlin-project/app/src/main/res/layouts/search/layout/recycler_view_search_feed.xml" value="0.1852355072463768" />
+        <entry key="..\:/Users/BNN/Documents/GitHub/kotlin-project/app/src/main/res/layouts/write/layout/fragment_write.xml" value="0.17806484295845998" />
+        <entry key="..\:/Users/BNN/Documents/GitHub/kotlin-project/app/src/main/res/menu/bottom_menu.xml" value="0.3605128205128205" />
         <entry key="..\:/Users/rlqls/Documents/GitHub/kotlin/app/src/main/res/drawable-v24/ic_launcher_foreground.xml" value="0.378125" />
         <entry key="..\:/Users/rlqls/Documents/GitHub/kotlin/app/src/main/res/drawable/ic_launcher_background.xml" value="0.378125" />
         <entry key="..\:/Users/rlqls/Documents/GitHub/kotlin/app/src/main/res/layout/bottom_menu.xml" value="0.28804347826086957" />

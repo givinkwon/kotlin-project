@@ -10,8 +10,10 @@ import android.widget.ImageView
 import androidx.recyclerview.widget.RecyclerView
 import com.bumptech.glide.Glide
 import com.example.kotlin.activity.data.dataclass.Feed.Feed
+import com.example.kotlin.activity.view.HomeActivity
+import com.example.kotlin.activity.view.Video.FragmentVideo
 import com.example.myapplication.R
-import com.example.myapplication.activity.ContentActivity
+
 
 
 class FeedRecyclerViewAdapter(private val context: Context): RecyclerView.Adapter<FeedRecyclerViewAdapter.ViewHolder>() {
@@ -40,8 +42,11 @@ class FeedRecyclerViewAdapter(private val context: Context): RecyclerView.Adapte
             val view = LayoutInflater.from(context).inflate(R.layout.recycler_view_search_feed,parent, false)
 
             view.setOnClickListener {
-                val intent = Intent(context, ContentActivity::class.java)
+                val intent = Intent(context, HomeActivity::class.java) // Home으로 이동 후 fragment 전환
+                intent.putExtra("transfer", true)
+                intent.flags = Intent.FLAG_ACTIVITY_NEW_TASK or Intent.FLAG_ACTIVITY_CLEAR_TASK or Intent.FLAG_ACTIVITY_CLEAR_TOP //액티비티 스택제거
                 context.startActivity(intent)
+
             }
 
             return ViewHolder(view)

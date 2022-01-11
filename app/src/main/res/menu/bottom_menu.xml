@@ -12,14 +12,14 @@
         android:id="@+id/menu_search"
         android:icon="@drawable/ic_baseline_search_24" />
     <item
-        android:title="Write"
+        android:title="Video"
         android:enabled="true"
-        android:id="@+id/menu_write"
-        android:icon="@drawable/ic_baseline_add_circle_24" />
+        android:id="@+id/menu_video"
+        android:icon="@drawable/ic_baseline_video_library_24" />
     <item
         android:title="Feed"
         android:enabled="true"
-        android:id="@+id/menu_group"
+        android:id="@+id/menu_feed"
         android:icon="@drawable/ic_baseline_group_24" />
     <item
         android:title="My"
