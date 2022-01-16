@@ -1,6 +1,5 @@
 package com.example.kotlin.activity.Fragment.Search
 
-import android.content.Intent
 import android.os.Bundle
 import android.util.Log
 import android.view.MenuItem
@@ -8,8 +7,6 @@ import androidx.appcompat.app.AppCompatActivity
 import androidx.lifecycle.Observer
 import androidx.lifecycle.ViewModelProvider
 import androidx.recyclerview.widget.GridLayoutManager
-import androidx.recyclerview.widget.LinearLayoutManager
-import com.example.kotlin.activity.view.Feed.FeedRecyclerViewAdapter
 import com.example.kotlin.activity.data.viewmodel.FeedViewModel
 import com.example.kotlin.activity.view.Search.Detail.SearchDetailRecyclerViewAdapter
 import com.example.myapplication.R

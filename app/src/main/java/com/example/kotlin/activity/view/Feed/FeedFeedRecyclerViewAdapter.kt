@@ -1,7 +1,6 @@
 package com.example.kotlin.activity.view.Feed
 
 import android.content.Context
-import android.content.Intent
 import android.util.Log
 import android.view.LayoutInflater
 import android.view.View
@@ -10,13 +9,10 @@ import android.widget.ImageView
 import androidx.recyclerview.widget.RecyclerView
 import com.bumptech.glide.Glide
 import com.example.kotlin.activity.data.dataclass.Feed.Feed
-import com.example.kotlin.activity.view.HomeActivity
-import com.example.kotlin.activity.view.Video.FragmentVideo
 import com.example.myapplication.R
 
 
-
-class FeedRecyclerViewAdapter(private val context: Context): RecyclerView.Adapter<FeedRecyclerViewAdapter.ViewHolder>() {
+class FeedFeedRecyclerViewAdapter(private val context: Context): RecyclerView.Adapter<FeedFeedRecyclerViewAdapter.ViewHolder>() {
     private var feedList = mutableListOf<Feed>()
 
     // component 숨기기 보이기
@@ -37,24 +33,8 @@ class FeedRecyclerViewAdapter(private val context: Context): RecyclerView.Adapte
 
     // 뷰 홀더 만들기 => recycler_view_item.xml과 연결하여 view로 변환
     override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): ViewHolder {
-        // HomeActivty에서 사용하는 경우
-        if(context.toString().contains("HomeActivity")) {
-            val view = LayoutInflater.from(context).inflate(R.layout.recycler_view_search_feed,parent, false)
-
-            view.setOnClickListener {
-                val intent = Intent(context, HomeActivity::class.java) // Home으로 이동 후 fragment 전환
-                intent.putExtra("transfer", true)
-                intent.flags = Intent.FLAG_ACTIVITY_NEW_TASK or Intent.FLAG_ACTIVITY_CLEAR_TASK or Intent.FLAG_ACTIVITY_CLEAR_TOP //액티비티 스택제거
-                context.startActivity(intent)
-
-            }
-
-            return ViewHolder(view)
-        } else {
-            val view = LayoutInflater.from(context).inflate(R.layout.recycler_view_search_feed,parent, false)
-            return ViewHolder(view)
-        }
-
+        val view = LayoutInflater.from(context).inflate(R.layout.recycler_view_feed_feed,parent, false)
+        return ViewHolder(view)
     }
 
     // 데이터를 바인딩하여 뷰에 뿌려질 수 있도록
@@ -77,7 +57,7 @@ class FeedRecyclerViewAdapter(private val context: Context): RecyclerView.Adapte
     }
 
     inner class ViewHolder(itemView: View):RecyclerView.ViewHolder(itemView){
-        var thumbnail : ImageView = itemView.findViewById(R.id.search_feed_image)
+        var thumbnail : ImageView = itemView.findViewById(R.id.feed_image)
 
 
     }

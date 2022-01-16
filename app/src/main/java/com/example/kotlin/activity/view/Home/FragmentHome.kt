@@ -13,7 +13,6 @@ import androidx.lifecycle.Observer
 import androidx.lifecycle.ViewModelProvider
 import androidx.recyclerview.widget.LinearLayoutManager
 import androidx.viewpager2.widget.ViewPager2
-import com.example.kotlin.activity.view.Feed.FeedRecyclerViewAdapter
 import com.example.kotlin.activity.data.viewmodel.FeedViewModel
 import com.example.kotlin.activity.data.viewmodel.UserViewModel
 

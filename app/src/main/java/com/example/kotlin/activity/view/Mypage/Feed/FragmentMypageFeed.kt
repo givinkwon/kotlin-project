@@ -8,7 +8,7 @@ import android.view.ViewGroup
 import androidx.lifecycle.Observer
 import androidx.lifecycle.ViewModelProvider
 import androidx.recyclerview.widget.GridLayoutManager
-import com.example.kotlin.activity.view.Feed.FeedRecyclerViewAdapter
+import com.example.kotlin.activity.view.Feed.FeedFeedRecyclerViewAdapter
 import com.example.kotlin.activity.data.viewmodel.FeedViewModel
 import com.example.myapplication.R
 import com.example.myapplication.databinding.FragmentMypageFeedBinding
@@ -19,7 +19,7 @@ class FragmentMypageFeed : Fragment() {
     // fragment_home.xml 연결 => lateinit => Fragment가 먼저 생성되고 선언될 수 있음 => onCreateView에서 binding 변수를 초기화함.
     private lateinit var binding: FragmentMypageFeedBinding
     private val feedviewmodel by lazy { ViewModelProvider(this).get(FeedViewModel::class.java) } // 생명주기 처리 없이 Livedata를 저장하고 있는 ViewModel
-    private lateinit var adapterfeed: FeedRecyclerViewAdapter // 홀더에 데이터를 뿌려주는 Adapter
+    private lateinit var adapterfeed: FeedFeedRecyclerViewAdapter // 홀더에 데이터를 뿌려주는 Adapter
 
 
 
@@ -42,7 +42,7 @@ class FragmentMypageFeed : Fragment() {
 
         // RecyclerView 시작
         // adapter init
-        adapterfeed = FeedRecyclerViewAdapter(requireActivity())
+        adapterfeed = FeedFeedRecyclerViewAdapter(requireActivity())
 
         // recyclerview에 연결
         mypage_feed_recyclerView.adapter = adapterfeed
