@@ -26,15 +26,13 @@ class HomeActivity : AppCompatActivity() {
     private val fragmentFeed by lazy { FragmentFeed() }
     private val fragmentMYpage by lazy { FragmentMypage() }
 
-
-
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
-
         setContentView(R.layout.home)
-        // 메뉴 보이기 조절
-        bottom_button.isEnabled = false
 
+        // 메뉴 보이기 조절
+        bottom_button.visibility = View.VISIBLE
+        bottom_transparency_button.visibility = View.GONE
 
             // fragment 모두 추가
             supportFragmentManager
@@ -78,17 +76,19 @@ class HomeActivity : AppCompatActivity() {
         if(intent.hasExtra("transfer")) { //해당 키값을 가진 intent가 정보를 가지고 있다면 실행
             changeFragment(fragmentVideo)
             // 메뉴 보이기 조절
-            bottom_button.isEnabled = true
+            bottom_button.visibility = View.GONE
+            bottom_transparency_button.visibility = View.VISIBLE
         }
     }
 
     private fun initNavigationBar() {
-        bottom_button.run {
+        bottom_transparency_button.run {
             setOnNavigationItemSelectedListener {
                 when(it.itemId) {
                     R.id.menu_home -> {
                         // 메뉴 보이기 조절
-                        bottom_button.isEnabled = false
+                        bottom_button.visibility = View.VISIBLE
+                        bottom_transparency_button.visibility = View.GONE
                         // 보여주기
                         supportFragmentManager
                             .beginTransaction()
@@ -114,7 +114,8 @@ class HomeActivity : AppCompatActivity() {
                     }
                     R.id.menu_search -> {
                         // 메뉴 보이기 조절
-                        bottom_button.isEnabled = false
+                        bottom_button.visibility = View.VISIBLE
+                        bottom_transparency_button.visibility = View.GONE
                         // 보여주기
                         supportFragmentManager
                             .beginTransaction()
@@ -140,7 +141,11 @@ class HomeActivity : AppCompatActivity() {
                     }
                     R.id.menu_video -> {
                         // 메뉴 보이기 조절
-                        bottom_button.isEnabled = true
+                        bottom_button.visibility = View.VISIBLE
+                        bottom_transparency_button.visibility = View.GONE
+                        // 메뉴 보이기 조절
+                        bottom_button.visibility = View.GONE
+                        bottom_transparency_button.visibility = View.VISIBLE
                         // 보여주기
                         supportFragmentManager
                             .beginTransaction()
@@ -166,7 +171,8 @@ class HomeActivity : AppCompatActivity() {
                     }
                     R.id.menu_feed -> {
                         // 메뉴 보이기 조절
-                        bottom_button.isEnabled = false
+                        bottom_button.visibility = View.VISIBLE
+                        bottom_transparency_button.visibility = View.GONE
                         // 보여주기
                         supportFragmentManager
                             .beginTransaction()
@@ -192,7 +198,152 @@ class HomeActivity : AppCompatActivity() {
                     }
                     R.id.menu_mypage -> {
                         // 메뉴 보이기 조절
-                        bottom_button.isEnabled = false
+                        bottom_button.visibility = View.VISIBLE
+                        bottom_transparency_button.visibility = View.GONE
+                        // 보여주기
+                        supportFragmentManager
+                            .beginTransaction()
+                            .show(fragmentMYpage)
+                            .commit()
+                        // 숨기기
+                        supportFragmentManager
+                            .beginTransaction()
+                            .hide(fragmentSearch)
+                            .commit()
+                        supportFragmentManager
+                            .beginTransaction()
+                            .hide(fragmentVideo)
+                            .commit()
+                        supportFragmentManager
+                            .beginTransaction()
+                            .hide(fragmentFeed)
+                            .commit()
+                        supportFragmentManager
+                            .beginTransaction()
+                            .hide(fragmentHome)
+                            .commit()
+                    }
+
+                }
+                true
+            }
+            selectedItemId = R.id.menu_video
+        }
+        bottom_button.run {
+            setOnNavigationItemSelectedListener {
+                when(it.itemId) {
+                    R.id.menu_home -> {
+                        // 메뉴 보이기 조절
+                        bottom_button.visibility = View.VISIBLE
+                        bottom_transparency_button.visibility = View.GONE
+                        // 보여주기
+                        supportFragmentManager
+                            .beginTransaction()
+                            .show(fragmentHome)
+                            .commit()
+                        // 숨기기
+                        supportFragmentManager
+                            .beginTransaction()
+                            .hide(fragmentSearch)
+                            .commit()
+                        supportFragmentManager
+                            .beginTransaction()
+                            .hide(fragmentVideo)
+                            .commit()
+                        supportFragmentManager
+                            .beginTransaction()
+                            .hide(fragmentFeed)
+                            .commit()
+                        supportFragmentManager
+                            .beginTransaction()
+                            .hide(fragmentMYpage)
+                            .commit()
+                    }
+                    R.id.menu_search -> {
+                        // 메뉴 보이기 조절
+                        bottom_button.visibility = View.VISIBLE
+                        bottom_transparency_button.visibility = View.GONE
+                        // 보여주기
+                        supportFragmentManager
+                            .beginTransaction()
+                            .show(fragmentSearch)
+                            .commit()
+                        // 숨기기
+                        supportFragmentManager
+                            .beginTransaction()
+                            .hide(fragmentHome)
+                            .commit()
+                        supportFragmentManager
+                            .beginTransaction()
+                            .hide(fragmentVideo)
+                            .commit()
+                        supportFragmentManager
+                            .beginTransaction()
+                            .hide(fragmentFeed)
+                            .commit()
+                        supportFragmentManager
+                            .beginTransaction()
+                            .hide(fragmentMYpage)
+                            .commit()
+                    }
+                    R.id.menu_video -> {
+                        // 메뉴 보이기 조절
+                        bottom_button.visibility = View.GONE
+                        bottom_transparency_button.visibility = View.VISIBLE
+                        // 보여주기
+                        supportFragmentManager
+                            .beginTransaction()
+                            .show(fragmentVideo)
+                            .commit()
+                        // 숨기기
+                        supportFragmentManager
+                            .beginTransaction()
+                            .hide(fragmentSearch)
+                            .commit()
+                        supportFragmentManager
+                            .beginTransaction()
+                            .hide(fragmentHome)
+                            .commit()
+                        supportFragmentManager
+                            .beginTransaction()
+                            .hide(fragmentFeed)
+                            .commit()
+                        supportFragmentManager
+                            .beginTransaction()
+                            .hide(fragmentMYpage)
+                            .commit()
+                    }
+                    R.id.menu_feed -> {
+                        // 메뉴 보이기 조절
+                        bottom_button.visibility = View.VISIBLE
+                        bottom_transparency_button.visibility = View.GONE
+                        // 보여주기
+                        supportFragmentManager
+                            .beginTransaction()
+                            .show(fragmentFeed)
+                            .commit()
+                        // 숨기기
+                        supportFragmentManager
+                            .beginTransaction()
+                            .hide(fragmentSearch)
+                            .commit()
+                        supportFragmentManager
+                            .beginTransaction()
+                            .hide(fragmentVideo)
+                            .commit()
+                        supportFragmentManager
+                            .beginTransaction()
+                            .hide(fragmentHome)
+                            .commit()
+                        supportFragmentManager
+                            .beginTransaction()
+                            .hide(fragmentMYpage)
+                            .commit()
+                    }
+                    R.id.menu_mypage -> {
+                        // 메뉴 보이기 조절
+                        bottom_button.visibility = View.VISIBLE
+                        bottom_transparency_button.visibility = View.GONE
                         // 보여주기
                         supportFragmentManager
                             .beginTransaction()

@@ -16,13 +16,25 @@
         app:layout_constraintBottom_toTopOf="@+id/bottom_button" />
 
     <com.google.android.material.bottomnavigation.BottomNavigationView
-        android:state_enabled="false"
         android:id="@+id/bottom_button"
         android:layout_width="0dp"
         android:layout_height="wrap_content"
         app:menu="@menu/bottom_menu"
-        android:drawable="@drawable/bottom_menu_color"
         app:layout_constraintTop_toBottomOf="@+id/bottom_frame"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintBottom_toBottomOf="parent" />
+
+    <com.google.android.material.bottomnavigation.BottomNavigationView
+        android:id="@+id/bottom_transparency_button"
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        app:menu="@menu/bottom_menu"
+        app:elevation="0dp"
+        android:alpha="1"
+        android:background="#00000000"
+        app:itemIconTint="@color/white"
+        app:itemTextColor="@color/white"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintBottom_toBottomOf="parent" />
