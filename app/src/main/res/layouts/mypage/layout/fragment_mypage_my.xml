@@ -2,78 +2,81 @@
 <ScrollView xmlns:android="http://schemas.android.com/apk/res/android"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
+    android:layout_weight="1"
+    android:scrollbars="none"
     android:fillViewport="true" >
-<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
-    xmlns:tools="http://schemas.android.com/tools"
-    xmlns:app="http://schemas.android.com/apk/res-auto"
-    android:orientation="vertical"
-    android:layout_width="match_parent"
-    android:layout_height="match_parent">
-
-
-    <TextView
-        android:id="@+id/mypage_my_value"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_marginLeft="10dp"
-        android:layout_marginTop="10dp"
-        android:text= "내 시세" />
-
-
-    <ImageView
-        android:id="@+id/mypage_fan_image"
+    <LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+        xmlns:tools="http://schemas.android.com/tools"
+        xmlns:app="http://schemas.android.com/apk/res-auto"
+        android:orientation="vertical"
         android:layout_width="match_parent"
-        android:layout_height="390dp"
-        android:layout_margin="10dp"
-        android:src= "@drawable/ic_launcher_background" />
-
-    <TextView
-        android:id="@+id/mypage_my_friend"
-        android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_marginLeft="10dp"
-        android:layout_marginTop="10dp"
-        android:text= "내 퍼스널" />
+        >
 
-<!--     RecyclerView 가로 배치 -->
-    <androidx.recyclerview.widget.RecyclerView
-        android:id="@+id/mypage_my_friend_recyclerView"
-        android:orientation="horizontal"
-        app:layoutManager="androidx.recyclerview.widget.LinearLayoutManager"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"/>
 
-    <TextView
-        android:id="@+id/mypage_my_higher_people"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_marginLeft="10dp"
-        android:layout_marginTop="10dp"
-        android:text= "내가 곧 친해질 수 있는 사람들" />
+        <TextView
+            android:id="@+id/mypage_my_value"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginLeft="10dp"
+            android:layout_marginTop="10dp"
+            android:text= "내 시세" />
 
-<!--     RecyclerView 가로 배치 -->
-    <androidx.recyclerview.widget.RecyclerView
-        android:id="@+id/mypage_my_higher_people_recyclerView"
-        android:orientation="horizontal"
-        app:layoutManager="androidx.recyclerview.widget.LinearLayoutManager"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"/>
 
-    <TextView
-        android:id="@+id/mypage_my_lower_people"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_marginLeft="10dp"
-        android:layout_marginTop="10dp"
-        android:text= "나와 친해질 수 없는 사람들" />
+        <ImageView
+            android:id="@+id/mypage_fan_image"
+            android:layout_width="match_parent"
+            android:layout_height="390dp"
+            android:layout_margin="10dp"
+            android:src= "@drawable/ic_launcher_background" />
+
+        <TextView
+            android:id="@+id/mypage_my_friend"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginLeft="10dp"
+            android:layout_marginTop="10dp"
+            android:text= "내 퍼스널" />
 
     <!--     RecyclerView 가로 배치 -->
-    <androidx.recyclerview.widget.RecyclerView
-        android:id="@+id/mypage_my_lower_people_recyclerView"
-        android:orientation="horizontal"
-        app:layoutManager="androidx.recyclerview.widget.LinearLayoutManager"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"/>
+        <androidx.recyclerview.widget.RecyclerView
+            android:id="@+id/mypage_my_friend_recyclerView"
+            android:orientation="horizontal"
+            app:layoutManager="androidx.recyclerview.widget.LinearLayoutManager"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"/>
 
-</LinearLayout>
+        <TextView
+            android:id="@+id/mypage_my_higher_people"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginLeft="10dp"
+            android:layout_marginTop="10dp"
+            android:text= "내가 곧 친해질 수 있는 사람들" />
+
+    <!--     RecyclerView 가로 배치 -->
+        <androidx.recyclerview.widget.RecyclerView
+            android:id="@+id/mypage_my_higher_people_recyclerView"
+            android:orientation="horizontal"
+            app:layoutManager="androidx.recyclerview.widget.LinearLayoutManager"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"/>
+
+        <TextView
+            android:id="@+id/mypage_my_lower_people"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginLeft="10dp"
+            android:layout_marginTop="10dp"
+            android:text= "나와 친해질 수 없는 사람들" />
+
+        <!--     RecyclerView 가로 배치 -->
+        <androidx.recyclerview.widget.RecyclerView
+            android:id="@+id/mypage_my_lower_people_recyclerView"
+            android:orientation="horizontal"
+            app:layoutManager="androidx.recyclerview.widget.LinearLayoutManager"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"/>
+
+    </LinearLayout>
 </ScrollView>
