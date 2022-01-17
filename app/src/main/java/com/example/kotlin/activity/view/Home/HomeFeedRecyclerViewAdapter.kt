@@ -9,10 +9,8 @@ import android.view.ViewGroup
 import android.widget.ImageView
 import androidx.recyclerview.widget.RecyclerView
 import com.bumptech.glide.Glide
-import com.example.kotlin.activity.data.dataclass.Feed.Feed
-import com.example.kotlin.activity.view.Video.FragmentVideo
+import com.example.kotlin.activity.data.dataclass.Feed
 import com.example.myapplication.R
-import androidx.appcompat.app.AppCompatActivity
 import com.example.kotlin.activity.view.HomeActivity
 
 

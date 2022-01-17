@@ -1,8 +1,7 @@
-package com.example.kotlin.activity.data.repository.Feed
+package com.example.kotlin.activity.data.repository
 
-import android.app.Application
 import android.util.Log
-import com.example.kotlin.activity.data.dataclass.Feed.Feed
+import com.example.kotlin.activity.data.dataclass.Feed
 import com.google.firebase.auth.FirebaseAuth
 import com.google.firebase.firestore.FirebaseFirestore
 import io.reactivex.Observable
@@ -95,4 +94,8 @@ class FeedRepo (){
                 Log.w("Feed.delete", "Error : $it")
             }
     }
+
+    // todo => background thread로 Feed data 호출
+    // user에 저장되어 있는 relationship array에 user를 가지고와서 해당 feed를 모두 가져온 후 createdAt 순서로 sort
+    // 양이 너무 많을 수 있으니 최근 1주일 data로만 한정할 것
 }

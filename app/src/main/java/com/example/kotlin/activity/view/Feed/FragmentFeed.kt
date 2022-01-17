@@ -30,13 +30,6 @@ class FragmentFeed: Fragment() {
     private val feedviewmodel by lazy { ViewModelProvider(this).get(FeedViewModel::class.java) } // 생명주기 처리 없이 Livedata를 저장하고 있는 ViewModel
     private lateinit var adapterfeed: FeedFeedRecyclerViewAdapter // 홀더에 데이터를 뿌려주는 Adapter
 
-
-    // ViewPager
-    private var numBanner = 3
-    private var currentPosition = Int.MAX_VALUE / 2 // 좌우로 무한 스크롤 할 수 있도록 현재 위치를 중간으로 설정
-    private var myHandler = MyHandler()
-    private val intervalTime = 1500.toLong() // 몇초 간격으로 페이지를 넘길것인지 (1500 = 1.5초)
-
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
 
@@ -48,7 +41,7 @@ class FragmentFeed: Fragment() {
     ): View? {
         binding = FragmentFeedBinding.inflate(layoutInflater, container, false)
 
-        return binding.root // binding.root == Frament_home.xml
+        return binding.root // binding.root == Frament_feed.xml
     }
 
     // view가 만들어지고 나서
@@ -64,11 +57,10 @@ class FragmentFeed: Fragment() {
         feed_feed_recyclerView.layoutManager = LinearLayoutManager(requireActivity(), LinearLayoutManager.VERTICAL, false)
 
         feed_feed_recyclerView.adapter = adapterfeed
-//
+
 
         // data ui update
-//        observerUserData()
-//        observerFeedData()
+        observerFeedData()
         // RecyclerView 끝
 
 
@@ -77,14 +69,6 @@ class FragmentFeed: Fragment() {
 // RecyclerView 시작
 
     // 데이터가 변화되었을 때 자동으로 데이터 가져온 후 변화 알려주기
-//    fun observerUserData(){
-//        viewmodel.fetchData().observe(requireActivity(), Observer {
-//            adapterfeed.setListData(it)
-//            // 변화 알려주기
-//            adapterfeed.notifyDataSetChanged()
-//        })
-//    }
-//
     fun observerFeedData(){
         feedviewmodel.getFeed() // 호출
         feedviewmodel.Feed.observe(requireActivity(), Observer {
@@ -94,49 +78,6 @@ class FragmentFeed: Fragment() {
     }
 
     // RecyclerView 끝
-
-    // ViewPager 시작
-
-    // 핸들러를 제작해줌.
-    private fun autoScrollStart(intervalTime: Long) {
-        myHandler.removeMessages(0) // 이거 안하면 핸들러가 1개, 2개, 3개 ... n개 만큼 계속 늘어남
-        myHandler.sendEmptyMessageDelayed(0, intervalTime) // intervalTime 만큼 반복해서 핸들러를 실행하게 함
-    }
-
-    // 핸들러 중지
-    private fun autoScrollStop(){
-        myHandler.removeMessages(0) // 핸들러를 중지시킴
-    }
-
-    private inner class MyHandler : Handler() {
-        override fun handleMessage(msg: Message) {
-            super.handleMessage(msg)
-
-            if(msg.what == 0) {
-                viewPager_invite.setCurrentItem(++currentPosition, true) // 다음 페이지로 이동
-                autoScrollStart(intervalTime) // 스크롤을 계속 이어서 한다.
-            }
-        }
-    }
-
-    // 다른 페이지 갔다가 돌아오면 다시 스크롤 시작
-    override fun onResume() {
-        super.onResume()
-        autoScrollStart(intervalTime)
-    }
-
-    // 다른 페이지로 떠나있는 동안 스크롤이 동작할 필요는 없음. 정지
-    override fun onPause() {
-        super.onPause()
-        autoScrollStop()
-    }
-
-    // 뷰 페이저에 들어갈 아이템
-    private fun getItemList(): ArrayList<Int> {
-        return arrayListOf<Int>(R.drawable.logo1, R.drawable.logo2, R.drawable.logo3)
-    }
-
-    // ViewPager 끝
 
     companion object {
 

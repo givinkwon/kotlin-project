@@ -1,8 +1,7 @@
-package com.example.kotlin.activity.data.repository.Fan
+package com.example.kotlin.activity.data.repository
 
-import android.app.Application
 import android.util.Log
-import com.example.kotlin.activity.data.dataclass.Fan.Fan
+import com.example.kotlin.activity.data.dataclass.Fan
 import com.google.firebase.auth.FirebaseAuth
 import com.google.firebase.firestore.FirebaseFirestore
 import io.reactivex.Observable

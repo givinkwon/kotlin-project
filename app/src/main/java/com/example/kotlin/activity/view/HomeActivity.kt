@@ -39,43 +39,47 @@ class HomeActivity : AppCompatActivity() {
         bottom_transparency_button.visibility = View.VISIBLE
 
         bottom_transparency_button.setBackgroundColor(Color.WHITE)
-            // fragment 모두 추가
-            supportFragmentManager
-                .beginTransaction()
-                .add(R.id.bottom_frame, fragmentHome)
-                .commit()
-            supportFragmentManager
-                .beginTransaction()
-                .add(R.id.bottom_frame, fragmentSearch)
-                .commit()
-            supportFragmentManager
-                .beginTransaction()
-                .add(R.id.bottom_frame, fragmentVideo)
-                .commit()
-            supportFragmentManager
-                .beginTransaction()
-                .add(R.id.bottom_frame, fragmentMYpage)
-                .commit()
+        // fragment 모두 추가
+        supportFragmentManager
+            .beginTransaction()
+            .add(R.id.bottom_frame, fragmentHome)
+            .commit()
+        supportFragmentManager
+            .beginTransaction()
+            .add(R.id.bottom_frame, fragmentSearch)
+            .commit()
+        supportFragmentManager
+            .beginTransaction()
+            .add(R.id.bottom_frame, fragmentVideo)
+            .commit()
+        supportFragmentManager
+            .beginTransaction()
+            .add(R.id.bottom_frame, fragmentFeed)
+            .commit()
+        supportFragmentManager
+            .beginTransaction()
+            .add(R.id.bottom_frame, fragmentMYpage)
+            .commit()
 
-            // HOME만 보여주기
-            supportFragmentManager
-                .beginTransaction()
-                .hide(fragmentSearch)
-                .commit()
-            supportFragmentManager
-                .beginTransaction()
-                .hide(fragmentVideo)
-                .commit()
-            supportFragmentManager
-                .beginTransaction()
-                .hide(fragmentFeed)
-                .commit()
-            supportFragmentManager
-                .beginTransaction()
-                .hide(fragmentMYpage)
-                .commit()
+        // HOME만 보여주기
+        supportFragmentManager
+            .beginTransaction()
+            .hide(fragmentSearch)
+            .commit()
+        supportFragmentManager
+            .beginTransaction()
+            .hide(fragmentVideo)
+            .commit()
+        supportFragmentManager
+            .beginTransaction()
+            .hide(fragmentFeed)
+            .commit()
+        supportFragmentManager
+            .beginTransaction()
+            .hide(fragmentMYpage)
+            .commit()
 
-            initNavigationBar()
+        initNavigationBar()
 
         // intent data 가져오기
         if(intent.hasExtra("transfer")) { //해당 키값을 가진 intent가 정보를 가지고 있다면 실행

@@ -9,9 +9,8 @@ import android.view.ViewGroup
 import android.widget.ImageView
 import androidx.recyclerview.widget.RecyclerView
 import com.bumptech.glide.Glide
-import com.example.kotlin.activity.data.dataclass.Feed.Feed
+import com.example.kotlin.activity.data.dataclass.Feed
 import com.example.kotlin.activity.view.HomeActivity
-import com.example.kotlin.activity.view.Video.FragmentVideo
 import com.example.myapplication.R
 
 // 1. RecyclerViewAdapter는 view(xml)이 아닌 data model에 따라 정의한다

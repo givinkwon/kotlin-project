@@ -6,9 +6,10 @@ import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import android.widget.ImageView
+import android.widget.TextView
 import androidx.recyclerview.widget.RecyclerView
 import com.bumptech.glide.Glide
-import com.example.kotlin.activity.data.dataclass.Feed.Feed
+import com.example.kotlin.activity.data.dataclass.Feed
 import com.example.myapplication.R
 
 
@@ -40,14 +41,22 @@ class FeedFeedRecyclerViewAdapter(private val context: Context): RecyclerView.Ad
     // 데이터를 바인딩하여 뷰에 뿌려질 수 있도록
     override fun onBindViewHolder(holder: ViewHolder, position: Int) {
         val feed : Feed = feedList[position]
+
+        holder.content.text = feed.content
+        holder.nickname.text = feed.nickname
+
+        // feed thumbnail
         Glide.with(context)
             .load(feed.thumbnail)
+            .placeholder(R.drawable.ic_launcher_background)
             .fitCenter()
-            .into(holder.thumbnail)
-//
-//        // 내용 숨기기 => 클릭 시 보이게 하기
-//        showHide(holder.name)
-//        showHide(holder.value)
+            .into(holder.image)
+
+        // profileimage
+        Glide.with(context)
+            .load(feed.profileimage)
+            .into(holder.profileimage)
+
 
     }
 
@@ -57,8 +66,10 @@ class FeedFeedRecyclerViewAdapter(private val context: Context): RecyclerView.Ad
     }
 
     inner class ViewHolder(itemView: View):RecyclerView.ViewHolder(itemView){
-        var thumbnail : ImageView = itemView.findViewById(R.id.feed_image)
-
+        var profileimage : ImageView = itemView.findViewById(R.id.feed_profile_image)
+        var nickname : TextView = itemView.findViewById(R.id.feed_nickname)
+        var image : ImageView = itemView.findViewById(R.id.feed_image)
+        var content : TextView = itemView.findViewById(R.id.feed_content)
 
     }
 
