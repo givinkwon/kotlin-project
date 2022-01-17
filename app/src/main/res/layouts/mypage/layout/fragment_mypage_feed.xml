@@ -8,12 +8,15 @@
 
 
 
-     RecyclerView 가로 배치
-        <androidx.recyclerview.widget.RecyclerView
-            android:id="@+id/mypage_feed_recyclerView"
-            android:orientation="horizontal"
-            app:layoutManager="androidx.recyclerview.widget.GridLayoutManager"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"/>
+    <!-- RecyclerView 가로 배치 -->
+    <androidx.recyclerview.widget.RecyclerView
+        android:id="@+id/mypage_feed_recyclerView"
+        android:orientation="horizontal"
+        app:layoutManager="androidx.recyclerview.widget.LinearLayoutManager"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        app:layout_constraintTop_toBottomOf="@id/category_detail_toolbar"
+        app:layout_constraintLeft_toLeftOf="parent"
+        />
 
 </LinearLayout>

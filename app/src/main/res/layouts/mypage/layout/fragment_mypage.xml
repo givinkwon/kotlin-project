@@ -103,6 +103,7 @@
         android:text="프로필 편집" />
 
     <com.google.android.material.bottomnavigation.BottomNavigationView
+        app:elevation="0dp"
         android:id="@+id/mypage_menu_button"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"

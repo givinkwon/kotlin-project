@@ -34,7 +34,8 @@ class FragmentMypage : Fragment() {
     private val fragmentMypageFeed by lazy { FragmentMypageFeed() }
     private val fragmentMypageMy by lazy { FragmentMypageMy() }
     private lateinit var auth: FirebaseAuth
-    private val viewmodel by lazy { ViewModelProvider(this).get(UserViewModel::class.java) } // 생명주기 처리 없이 Livedata를 저장하고 있는 ViewModel
+    private val userviewmodel by lazy { ViewModelProvider(this).get(UserViewModel::class.java) } // 생명주기 처리 없이 Livedata를 저장하고 있는 ViewModel
+
     private var currentUserData : User? = null
     var firestore = FirebaseFirestore.getInstance()
 
@@ -56,33 +57,14 @@ class FragmentMypage : Fragment() {
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
         val childFragment: FragmentManager = childFragmentManager
-//        viewmodel.getData().observeOn(Schedulers.newThread()).subscribeOn(Schedulers.io()).subscribe(
-//            {
-//                currentUserData = it
-//
-//                requireActivity().runOnUiThread(Runnable {
-//                    Glide.with(this)
-//                        .load(currentUserData?.profileimage)
-//                        .into(profile_image)
-//                })
-//            },{}
-//
-//    )
-//
-//
-//
-//        initNavigationBar(childFragment)
-//
-//        initNavigationBar(childFragment)
-//
-//
-//
-//        // 프로필 사진 클릭 시
-//        profile_image.setOnClickListener() {
-//            openGalley()
-//        }
-//
-//        var firestore = FirebaseFirestore.getInstance()
+
+        // navigationbar init
+        initNavigationBar(childFragment)
+
+        // 프로필 사진 클릭 시
+        profile_image.setOnClickListener() {
+            openGalley()
+        }
 
 
     }
