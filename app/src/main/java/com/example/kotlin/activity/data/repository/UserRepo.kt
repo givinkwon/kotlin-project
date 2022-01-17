@@ -25,6 +25,31 @@ class UserRepo() {
             }
     }
 
+    // 현재 user email 가져오기
+    fun getcurrentdata(): Observable<User> {
+        // subscribeOn => observable 객체 만들 때(create, just) io 쓰레드 활용
+        // observeon => 이후 계산 및 연산(onNext 등)은 mainthread 확인
+        return Observable.create{ emitter: ObservableEmitter<User> ->
+            firestore.collection("User").whereEqualTo("email", auth.currentUser?.email)
+                .addSnapshotListener { value, e ->
+                    if (e != null) {
+                        Log.w("우옹", "Listen failed.", e)
+                        return@addSnapshotListener
+                    }
+
+                    for (doc in value!!) {
+
+                        val getData = doc.toObject(User::class.java)
+                        getData?.let { currentUserDoc ->
+                            emitter.onNext(currentUserDoc)
+                        }
+
+                    }
+                }
+        }.subscribeOn(Schedulers.io()).observeOn(AndroidSchedulers.mainThread())
+        // 쓰레드 사용 시 emitter type 명시 필요
+    }
+
     fun getdata(): Observable<User> {
         // subscribeOn => observable 객체 만들 때(create, just) io 쓰레드 활용
         // observeon => 이후 계산 및 연산(onNext 등)은 mainthread 확인

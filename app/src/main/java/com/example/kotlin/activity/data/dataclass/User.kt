@@ -12,4 +12,8 @@ class User(
     val value:String? = null,
     val profileimage:String? = null,
     val createdAt: java.util.Date? = null,
+
+    val fan: ArrayList<String>? = null,
+    val relationship : ArrayList<String>? = null,
+
 )

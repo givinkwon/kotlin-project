@@ -19,16 +19,31 @@ class UserViewModel : ViewModel() {
 
     private val UserRepo: UserRepo by lazy { UserRepo() }
 
-    fun getUser() {
-        // subscribe
-        UserRepo.getdata().subscribe(
-            {
-                User.value = it
-            },
-            {
-                // error
-            },
-        )
+    fun getUser(state : String? = "") {
+        if (state == "") {
+            // subscribe
+            UserRepo.getdata().subscribe(
+                {
+                    User.value = it
+                },
+                {
+                    // error
+                },
+            )
+        }
+
+        // 현재 user를 가져오길 원하는 경우
+        if (state == "current") {
+            // subscribe
+            UserRepo.getcurrentdata().subscribe(
+                {
+                    User.value = it
+                },
+                {
+                    // error
+                },
+            )
+        }
 
     }
 

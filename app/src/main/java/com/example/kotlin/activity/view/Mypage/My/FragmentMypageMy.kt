@@ -12,6 +12,7 @@ import androidx.recyclerview.widget.LinearLayoutManager
 import com.example.kotlin.activity.data.viewmodel.FeedViewModel
 import com.example.kotlin.activity.data.viewmodel.UserViewModel
 import com.example.myapplication.databinding.FragmentMypageMyBinding
+import kotlinx.android.synthetic.main.fragment_mypage.*
 import kotlinx.android.synthetic.main.fragment_mypage_my.*
 
 class FragmentMypageMy : Fragment() {
@@ -25,6 +26,8 @@ class FragmentMypageMy : Fragment() {
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
+
+        feedviewmodel.getFeed() // 호출
     }
 
     override fun onCreateView(
@@ -64,6 +67,8 @@ class FragmentMypageMy : Fragment() {
         mypage_my_lower_people_recyclerView.adapter = adapterfeed
 
         observerFeedData()
+        observerUserData()
+
 
         // RecyclerView 끝
 
@@ -74,7 +79,6 @@ class FragmentMypageMy : Fragment() {
 
     // 데이터가 변화되었을 때 자동으로 데이터 가져온 후 변화 알려주기
     fun observerUserData(){
-        userviewmodel.getUser() // 호출
         userviewmodel.User.observe(requireActivity(), Observer {
             adapteruser.setListData(it)
             Log.d("data", it.email!!)
@@ -82,7 +86,6 @@ class FragmentMypageMy : Fragment() {
     }
 
     fun observerFeedData(){
-        feedviewmodel.getFeed() // 호출
         feedviewmodel.Feed.observe(requireActivity(), Observer {
             adapterfeed.setListData(it)
             Log.d("data", it.toString())

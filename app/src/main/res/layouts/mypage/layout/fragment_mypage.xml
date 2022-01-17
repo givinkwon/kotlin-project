@@ -54,19 +54,19 @@
             android:layout_height="wrap_content"
             android:orientation="vertical">
             <TextView
-                android:id="@+id/mypage_follower_number"
+                android:id="@+id/mypage_fan_number"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_marginLeft="10dp"
                 android:layout_marginTop="10dp"
                 android:text= "68" />
             <TextView
-                android:id="@+id/mypage_follower"
+                android:id="@+id/mypage_fan"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_marginLeft="10dp"
                 android:layout_marginTop="10dp"
-                android:text= "팔로워" />
+                android:text= "Fan" />
         </androidx.appcompat.widget.LinearLayoutCompat>
 
 
@@ -75,19 +75,19 @@
             android:layout_height="wrap_content"
             android:orientation="vertical">
             <TextView
-                android:id="@+id/mypage_following_number"
+                android:id="@+id/mypage_personal_number"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_marginLeft="10dp"
                 android:layout_marginTop="10dp"
                 android:text= "68" />
             <TextView
-                android:id="@+id/mypage_folloing"
+                android:id="@+id/mypage_personal"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_marginLeft="10dp"
                 android:layout_marginTop="10dp"
-                android:text= "팔로잉" />
+                android:text= "퍼스널" />
         </androidx.appcompat.widget.LinearLayoutCompat>
 
     </androidx.appcompat.widget.LinearLayoutCompat>
