@@ -9,12 +9,10 @@ import com.example.myapplication.R
 import com.example.myapplication.activity.InviteActivity
 import kotlinx.android.synthetic.main.item_home_banner.view.*
 
-class ViewPagerAdapter(itemList: ArrayList<Int>, context: Context) : RecyclerView.Adapter<ViewPagerAdapter.PagerViewHolder>() {
+class HomeViewPagerAdapter(itemList: ArrayList<Int>, context: Context) : RecyclerView.Adapter<HomeViewPagerAdapter.PagerViewHolder>() {
     var item = itemList
     var context = context
     override fun onCreateViewHolder(parent: ViewGroup, viewType: Int) = PagerViewHolder((parent)) // viewholder
-
-    override fun getItemCount():  Int = Int.MAX_VALUE	// 무한 스크롤을 위해 무한으로
 
     // 페이지 넘길 때마다 뷰홀더에 데이터 연결
     override fun onBindViewHolder(holder: PagerViewHolder, position: Int) {
@@ -28,6 +26,8 @@ class ViewPagerAdapter(itemList: ArrayList<Int>, context: Context) : RecyclerVie
         }
 
     }
+
+    override fun getItemCount():  Int = Int.MAX_VALUE	// 무한 스크롤을 위해 무한으로
 
     inner class PagerViewHolder(parent: ViewGroup) : RecyclerView.ViewHolder
         (LayoutInflater.from(parent.context).inflate(R.layout.item_home_banner, parent, false)){

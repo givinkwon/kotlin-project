@@ -41,7 +41,6 @@
             android:name=".MapsActivity"
             android:exported="false"
             android:label="@string/title_activity_maps" />
-        <activity android:name=".activity.ContentActivity"></activity>
         <activity android:name="com.example.kotlin.activity.view.MainActivity"></activity>
         <activity android:name="com.example.kotlin.activity.view.Login.SignupActivity"></activity>
         <activity android:name="com.example.kotlin.activity.view.HomeActivity"></activity>

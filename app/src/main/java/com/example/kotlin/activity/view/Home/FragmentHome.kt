@@ -94,7 +94,7 @@ class FragmentHome: Fragment() {
 
 
         // viewPager
-        viewPager_invite.adapter = ViewPagerAdapter(getItemList(), requireContext()) // 어댑터 생성
+        viewPager_invite.adapter = HomeViewPagerAdapter(getItemList(), requireContext()) // 어댑터 생성
         viewPager_invite.orientation = ViewPager2.ORIENTATION_HORIZONTAL // 방향을 가로로
         with(viewPager_invite) {
             viewPager_invite.setCurrentItem(currentPosition, false) // 현재 위치를 지정
