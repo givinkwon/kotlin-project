@@ -1,27 +1,26 @@
 package com.example.kotlin.activity.view.Video
 
 import android.content.Context
-import android.content.Intent
 import android.net.Uri
 import android.view.LayoutInflater
 import android.view.ViewGroup
-import android.widget.MediaController
+import android.widget.TextView
+import androidx.annotation.NonNull
 import androidx.recyclerview.widget.RecyclerView
-import com.bumptech.glide.Glide
 import com.example.kotlin.activity.data.dataclass.Feed
-import com.example.kotlin.activity.view.Home.HomeViewPagerAdapter
-import com.example.kotlin.activity.view.Video.VideoViewPagerAdapter
 import com.example.myapplication.R
-import com.example.myapplication.activity.InviteActivity
 import com.google.android.exoplayer2.ExoPlayer
 import com.google.android.exoplayer2.MediaItem
-import com.google.android.exoplayer2.SimpleExoPlayer
-import kotlinx.android.synthetic.main.item_home_banner.view.*
-import kotlinx.android.synthetic.main.viewpager_video.view.*
+import com.google.android.exoplayer2.ui.PlayerView
 
-class VideoViewPagerAdapter(itemList: ArrayList<Int>, private val context: Context) : RecyclerView.Adapter<VideoViewPagerAdapter.PagerViewHolder>() {
+
+class VideoViewPagerAdapter(private val context: Context, Fragment: FragmentVideo) : RecyclerView.Adapter<VideoViewPagerAdapter.PagerViewHolder>() {
     private var feedList = mutableListOf<Feed>()
-    private var player = ExoPlayer.Builder(context).build()
+    // Build video
+    lateinit var player : ExoPlayer
+    // ViewPager 시작
+    val VIDEO_PATH = "android.resource://" + "com.example.kotlin" + "/" + R.raw.video
+    var videourl = Uri.parse(VIDEO_PATH)
 
     // data init
     fun setListData(data: Feed){
@@ -36,18 +35,18 @@ class VideoViewPagerAdapter(itemList: ArrayList<Int>, private val context: Conte
     override fun onBindViewHolder(holder: PagerViewHolder, position: Int) {
 //        val feed : Feed = feedList[position]
 
-        // Build video
-//        val mediaItem: MediaItem = MediaItem.fromUri()
+        player = ExoPlayer.Builder(context).build()
+        var mediaItem = MediaItem.fromUri(videourl)
 
-//        holder.video.player = player
-//
-//        // set meida
-//        player.setMediaItem(mediaItem)
-//        // Prepare the player
-//        player.prepare()
-//        // Start video
-//        player.play()
+        holder.video.setPlayer(player)
 
+        // set meida
+        player.setMediaItem(mediaItem)
+
+        // Prepare the player
+        player.prepare()
+        // Start video
+        player.play()
 
         // 상세 보기 클릭 시 새로운 페이지로 이동하게 하게
 //        holder.itemView.setOnClickListener{
@@ -61,15 +60,19 @@ class VideoViewPagerAdapter(itemList: ArrayList<Int>, private val context: Conte
 
     override fun getItemCount():  Int = Int.MAX_VALUE	// 무한 스크롤을 위해 무한으로
 
-    inner class PagerViewHolder(parent: ViewGroup) : RecyclerView.ViewHolder
-        (LayoutInflater.from(parent.context).inflate(R.layout.fragment_video, parent, false)){
+    // 페이지가 떨어질 떄
+    override fun onViewDetachedFromWindow(holder: PagerViewHolder) {
+        super.onViewDetachedFromWindow(holder)
+        player.pause()
+        player.release()
+    }
 
-//        val video = itemView.video_video
-        val like = itemView.video_like
-        val reply = itemView.video_reply
-        val share = itemView.video_share
-        val more = itemView.video_more
-        val id = itemView.video_id
-        val content = itemView.video_content
+
+    inner class PagerViewHolder(parent: ViewGroup) : RecyclerView.ViewHolder
+        (LayoutInflater.from(parent.context).inflate(R.layout.viewpager_video, parent, false)){
+
+        val video : PlayerView = itemView.findViewById(R.id.video_video)
+        val id : TextView = itemView.findViewById(R.id.video_id)
+        val content : TextView = itemView.findViewById(R.id.video_content)
     }
 }

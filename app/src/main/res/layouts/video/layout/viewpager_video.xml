@@ -4,18 +4,18 @@
     android:layout_height="match_parent"
     xmlns:app="http://schemas.android.com/apk/res-auto">
 
-<!--    &lt;!&ndash; video 재생 &ndash;&gt;-->
-<!--    <com.google.android.exoplayer2.ui.PlayerView-->
-<!--        android:id="@+id/video_video"-->
-<!--        android:layout_width="match_parent"-->
-<!--        android:layout_height="0dp"-->
-<!--        app:resize_mode="fill"-->
-<!--        app:layout_constraintBottom_toBottomOf="parent"-->
-<!--        app:layout_constraintEnd_toEndOf="parent"-->
-<!--        app:layout_constraintStart_toStartOf="parent"-->
-<!--        app:layout_constraintTop_toTopOf="parent" />-->
+    <!-- video 재생 -->
+    <com.google.android.exoplayer2.ui.PlayerView
+        android:id="@+id/video_video"
+        android:layout_width="match_parent"
+        android:layout_height="0dp"
+        app:resize_mode="fill"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent" />
 
-<!--    &lt;!&ndash; 좋아요 &ndash;&gt;-->
+    <!-- 좋아요 -->
 <!--    <VideoView-->
 <!--        android:id="@+id/video_video"-->
 <!--        android:layout_height="match_parent"-->
